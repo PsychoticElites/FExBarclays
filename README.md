@@ -35,6 +35,8 @@ The application also implements Street-View of the race-venue that helps race-go
 Our prototype completes the “Trackside Wayfinding” and “Second Screen Viewing at Trackside”, for Formula E. And, it also completes “iSight”, for Barclays. Please check the further sections to know more about these features in detail.
 Whole android application is built on .Net and Xamarin Framework, and hence, can also be ported across platforms like - iOS and Windows.
 
+You need at least Android API level 21 (Lollipop) to run this application.
+
 > The libraries used in this project are mostly (if not all) Open Source and Free to use and distribute. The video streams used in this project are not owned by us and all the copyright belongs to the original author. This application was built for sole purpose of competing in [#UNITEDBYHCL Hackathon](https://www.hackerearth.com/sprints/unitedbyhcl/). We do not claim any copyright on the streams/external libraries.
 
 ## 2.   Objectives
@@ -107,6 +109,8 @@ We have also tried to incorporate few extra features in the application for the 
 Driver information and race schedules are fetched on the fly via APIs we’ve made for test purposes. So, the information is updated at one end and the change is reflected in real-time on the devices everywhere else.
 
 # 6.    Running The Project
+Let  us remind you again that the minimum Android OS that you need to run this project is Lollipop (API Level 21). So, make sure you're satisfying the minimum requirements first. Otherwise, your handset won't be able to parse the apk file.
+
 - ### Permissions Required :
     This application requires you to provide few permissions to it, in order to work properly. Here's the list of permissions that the application needs :
     - Internet Access
