@@ -14,7 +14,7 @@
     * [Permissions Required](#permissions-required-)
     * [Instructions For Direct APK Installation](#instructions-for-direct-apk-installation-)
     * [Instructions For Developers/Testers](#instructions-for-developerstesters-)
-* [Wirefram/Mockup](#7----wireframemockup)
+* [Wireframe/Mockup](#7----wireframemockup)
 * [Future Scope/ To Do](#8-future-scope-to-do)
 * [Technology Stack Used](#9-technology-stack-used)
     * [Front End Development](#front-end-development)
