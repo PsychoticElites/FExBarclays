@@ -67,7 +67,7 @@ Whole android application is built on .Net and Xamarin Framework, and hence, can
 Whether you need a restaurant to satisfy your hunger, or you need to find the closest restroom, or maybe you wanted to check out the Grandstand or Formula E headquarter, we’ve got you covered.
 Users can simply tap on the annotated places to find information regarding the same. We’ve categorized everything, so you don’t have to go through a large list of text, just to find a restaurant. Just tap on the intended category, and the application will show you all the closest Restrooms/Restaurants/Grandstands etc.
 
-     - ur trackside wayfinding doesn’t stop at this, just showing the annotated map won’t help the user much. Therefore, you can also choose to get directions to navigate from your current GPS location to your intended destination, since our application is backed by the powerful Google Maps, you get detailed information about the road conditions to avoid traffic or find the shortest routes.
+     - Our trackside wayfinding doesn’t stop at this, just showing the annotated map won’t help the user much. Therefore, you can also choose to get directions to navigate from your current GPS location to your intended destination, since our application is backed by the powerful Google Maps, you get detailed information about the road conditions to avoid traffic or find the shortest routes.
 
 - ## Challenge 02 (Second Screen Viewing at Trackside)
      - To enhance User experience, we decided to merge the Challenge 2, i.e. Second Screen Viewing At Trackside into Challenge 1. 
