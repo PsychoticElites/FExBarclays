@@ -173,7 +173,7 @@ If selected for the 3rd round, we would like to optimize this application furthe
 •	Google Play Services
 
 ## 9.	Team's Achievements and Experience
-- ### Rajasthan Hackathon 2017 (Project Link)
+- ### Rajasthan Hackathon 2017 ([Project Link](https://github.com/PsychoticElites/Rajasthan-Sign-On-GOR-Hackathon-Project-))
     - Developed a Stand-Alone Windows application which incorporated 2 leading User Services, “Bhamashah” and “e-Mitra” to create a User Friendly and Efficient application which focuses on performing major tasks with little-or-no Extra Inputs from User ensuring minimal interaction from User side, yet performing crucial tasks.
     
     - Stood among TOP 50 participants in the Hackathon. 
@@ -184,7 +184,7 @@ If selected for the 3rd round, we would like to optimize this application furthe
 
 ## 10.	Team
 ### Team Name : Psychotic Elites
-- #### Dhruv Kanojia ([Lead Developer](https://github.com/Xonshiz))
-- #### Ankit Pass ([UI/UX Designer](https://github.com/ankitpassi141))
-- #### Devesh Shyngle ([Programmer & Security Tester](https://github.com/deveshyngle))
-- #### Shubham Dwivedi ([Assistant Programmer](https://github.com/shubham1706))
+- #### [Dhruv Kanojia](https://github.com/Xonshiz) (Lead Developer)
+- #### [Ankit Pass](https://github.com/ankitpassi141) (UI/UX Designer)
+- #### [Devesh Shyngle](https://github.com/deveshyngle) (Programmer & Security Tester)
+- #### [Shubham Dwivedi](https://github.com/shubham1706) (Assistant Programmer)
