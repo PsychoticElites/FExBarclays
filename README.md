@@ -2,18 +2,30 @@
 # FExBarclays
 
 ## Table of Content
-* [Introduction]()
-* [Objectives]()
-* [Challenges](#installation)
-* [Features](#python-support)
-* [Extra Features](#windows-binary)
-* [Running The Project](#list-of-arguments)
-* [Future Scope/ To Do](#usage)
-    * [Windows](#windows)
-* [Technology Stack Used](#features)
-* [Team’s Area of Expertise](#9-teams-area-of-expertise)
-* [Team's Achievements and Experience](#10--teams-achievements-and-experience)
-* [Team](#10--team)
+* [Introduction](#1-introduction)
+* [Objectives](#2-objectives)
+* [Challenges](#3-challenges)
+     * [Challenge 01 (Trackside Wayfinding)](#challenge-01-trackside-wayfinding)
+     * [Challenge 02 (Second Screen Viewing at Trackside)](#challenge-02-second-screen-viewing-at-trackside)
+     * [Challenge 04 (iSight - For Barclays)](#challenge-04-isight---for-barclays)
+* [Features](#4-features)
+* [Extra Features](#5-extra-features)
+* [Running The Project](#6----running-the-project)
+    * [Permissions Required](#permissions-required-)
+    * [Instructions For Normal Users](#normal-users-)
+    * [Instructions For Developers/Testers](#developerstesters-)
+* [Wirefram/Mockup](#7----wireframmockup)
+* [Future Scope/ To Do](#8-future-scope-to-do)
+* [Technology Stack Used](#9-technology-stack-used)
+    * [Front End Development](#front-end-development)
+    * [Back End Development](#back-end-development)
+    * [Frameworks](#frameworks)
+    * [Packages](#packages)
+    * [Application Programmable Interfaces (APIs)](#application-programmable-interfaces-apis)
+    * [VR Engine](#vr-engine)
+* [Team’s Area of Expertise](#10--teams-area-of-expertise)
+* [Team's Achievements and Experience](#11--teams-achievements-and-experience)
+* [Team](#12--team)
 
 ## 1. Introduction
 This application aims to complete the challenges 1, 2 and 4 of the UI/UX Theme of #UNITEDBYHCL Hackathon, 2017. This application is in prototype phase, but works like any full scale deployed application. With this Formula E application users can Sign Up, Log In, view upcoming races, Driver’s information, watch Live streams of the ongoing events and find any nearby places to explore by using the integrated Google Maps. Furthermore, the users can also locate the nearest Barclays Bank ATM or Branch using voice enabled commands specially designed for visually impaired people.
@@ -104,10 +116,10 @@ Driver information and race schedules are fetched on the fly via APIs we’ve ma
     - Read Google Service Configuration
     - Prevent Phone From Sleeping (For Video Streaming and Maps)
     
-- #### Normal Users :
+- #### Instructions For Normal Users :
     If you want to run this application on your android phone, please move over to the "[`Release`](https://github.com/PsychoticElites/FExBarclays/releases)" section and download the latest stable APK build for your android phone. You do not need any external libraries or application.
 
-- #### Developers/Testers :
+- #### Instructions For Developers/Testers :
      If you're a developer or any user who wishes to test this application and run this android project, it's recommended to install Visual Studio with Xamarin Support and Android SDKs on your system. Remember that Android SDKs should be in your local path for you to be able to compile the project properly.
 
     If you do not happen to have Visual Studio, it is recommended to get it because it'll download all the required packages on its own, if they're not present. You can use Visual Studio's Free Community Edition. It'll work, as we've developed this application on it.
@@ -169,45 +181,45 @@ If selected for the 3rd round, we would like to optimize this application furthe
 ## 10.  Team’s Area of Expertise
 - ### Front End Developer
     - **Ankit Passi** **(** UI/UX Designer **)**
-• Photoshop
-• GIMP
-• Illustrator
-• C#
-• C++
-• Xamarin Framework
-• VR Developer
-• well-versed with Unreal Engine Visual Scripting.
+        - Photoshop
+        - GIMP
+        - Illustrator
+        - C#
+        - C++
+        - Xamarin Framework
+        - VR Developer
+        - Well-versed with Unreal Engine Visual Scripting.
 
 
 - ### Back End Developers
     - **Dhruv Kanojia** **(** Lead Developer **)**
-• Python
-• C#
-• Core Java
-• JSON
-• PHP
-• .NET Framework
-• Xamarin Framework
-• Web Development
-• Google Accessibility Packages
+        - Python
+        - C#
+        - Core Java
+        - JSON
+        - PHP
+        - .NET Framework
+        - Xamarin Framework
+        - Web Development
+        - Google Accessibility Packages
  
     - **Devesh Shyngle** **(** Programmer & Security Professional **)**
-• C#
-• C++
-• PHP
-• .NET Framework
-• Xamarin Framework
-• Google Play Services
-• Web Development
-• Security Optimizer
-• Bug Tester
+        - C#
+        - C++
+        - PHP
+        - .NET Framework
+        - Xamarin Framework
+        - Google Play Services
+        - Web Development
+        - Security Optimizer
+        - Bug Tester
 
     - **Shubham Dwivedi** **(** Assistant Programmer **)**
-• C#
-• C++
-• .NET Framework
-• Xamarin Framework
-• Google Play Services
+        - C#
+        - C++
+        - .NET Framework
+        - Xamarin Framework
+        - Google Play Services
 
 ## 11.  Team's Achievements and Experience
 - ### Rajasthan Hackathon 2017 ([Project Link](https://github.com/PsychoticElites/Rajasthan-Sign-On-GOR-Hackathon-Project-))
