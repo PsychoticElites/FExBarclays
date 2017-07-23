@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/mainlayoutbg"
+    android:gravity="center">
+    <LinearLayout
+        android:orientation="vertical"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout2"
+        android:layout_gravity="center"
+        android:padding="5dp"
+        android:gravity="center"
+        android:layout_marginBottom="5dp">
+        <ImageButton
+            android:src="@drawable/webfelogo"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:id="@+id/buttonFE"
+            android:background="@android:color/transparent"
+            android:scaleType="centerCrop"
+            android:padding="5dp"
+            android:hapticFeedbackEnabled="true" />
+        <ImageButton
+            android:src="@drawable/webbarclays"
+            android:layout_width="115dp"
+            android:layout_height="130dp"
+            android:id="@+id/buttonBarclays"
+            android:background="@android:color/transparent"
+            android:padding="5dp"
+            android:scaleType="centerCrop"
+            android:hapticFeedbackEnabled="true" />
+    </LinearLayout>
+</LinearLayout>

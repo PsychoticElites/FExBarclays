@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/barclaysbg">
+    <LinearLayout
+        android:orientation="vertical"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout1"
+        android:layout_marginTop="50dp">
+        <ImageView
+            android:src="@drawable/webbarclays"
+            android:layout_width="match_parent"
+            android:layout_height="190.0dp"
+            android:id="@+id/imageView1"
+            android:layout_gravity="center"
+            android:layout_marginTop="50dp"
+            android:padding="5dp" />
+    </LinearLayout>
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="61.0dp"
+        android:id="@+id/space1" />
+    <LinearLayout
+        android:orientation="vertical"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="wrap_content"
+        android:layout_height="140.0dp"
+        android:id="@+id/linearLayout2"
+        android:layout_gravity="bottom|center"
+        android:padding="5dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginBottom="50dp"
+        android:layout_marginTop="70dp">
+        <Button
+            android:text="Locate ATM"
+            android:layout_width="215.0dp"
+            android:layout_height="50dp"
+            android:id="@+id/ATMBranch"
+            android:layout_gravity="center"
+            android:textSize="20dp"
+            android:background="@drawable/roundbutton_layout3"
+            android:hapticFeedbackEnabled="true"
+            android:shadowRadius="4"
+            android:layout_margin="10dp"
+            android:textColor="#ffffff" />
+        <Button
+            android:text="View Branch"
+            android:layout_width="215.0dp"
+            android:layout_height="50dp"
+            android:id="@+id/BranchDetailsScreen"
+            android:layout_gravity="center"
+            android:textSize="20dp"
+            android:background="@drawable/roundbutton_layout2"
+            android:hapticFeedbackEnabled="true"
+            android:shadowRadius="4" />
+    </LinearLayout>
+</LinearLayout>

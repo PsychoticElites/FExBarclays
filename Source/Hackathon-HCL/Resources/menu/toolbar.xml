@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<menu xmlns:android="http://schema.android.com/apk/res/android"
+      xmlns:tools="http://schema.android.com/tools"
+      tools:context=".ATMBranchScreen"
+      >
+
+  <item
+  android:id="@+id/abouttUs"
+  android:title="About Us"
+    />
+  <item
+    android:id="@+id/contactUs"
+    android:title="Contact Us"
+    />
+  <item
+  android:id="@+id/aboutDev"
+  android:title="About Application"
+    />
+</menu>

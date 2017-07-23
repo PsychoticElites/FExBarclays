@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+  <group android:checkableBehavior="single">
+    <item android:id="@+id/nav_raceSchedule" android:icon="@drawable/ic_schedule" android:title="Race Schedule" />
+    <item android:id="@+id/nav_driverInfo" android:icon="@drawable/ic_driverInfo" android:title="Driver Information" />
+    <item android:id="@+id/nav_buyTicket" android:icon="@drawable/ic_iconticket" android:title="Buy Ticket" />
+    <item android:id="@+id/nav_visitUs" android:icon="@drawable/ic_location_on" android:title="Visit Us" />
+  </group>
+  <item android:title="Other Details">
+    <menu>
+      <item android:id="@+id/nav_aboutFE" android:icon="@drawable/ic_feicon" android:title="About Formula E" />
+      <item android:id="@+id/nav_protoApp" android:icon="@drawable/ic_info_outline" android:title="About Prototype Application" />
+      <item android:id="@+id/nav_aboutUs" android:icon="@drawable/ic_developer_mode" android:title="About Creators" />
+    </menu>
+  </item>
+</menu>

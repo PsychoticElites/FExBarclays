@@ -125,6 +125,9 @@ Driver information and race schedules are fetched on the fly via APIs we’ve ma
     If you do not happen to have Visual Studio, it is recommended to get it because it'll download all the required packages on its own, if they're not present. You can use Visual Studio's Free Community Edition. It'll work, as we've developed this application on it.
 But, if for some reason, you don't want to or can't install Visual Studio, you will need to have .NET, Xamarin, Android SDK and required Packages in your system's local path for you to be able to compile and execute this application project.
 
+    Since we have integrated Google Maps, you need an API KEY to be able to call the Google API. Please get your Google API Key and update the value in the `strings.xml`, somewhere around line 22.
+
+
 You can check the Demonstration Video On YouTube :
 
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/pGzj9NH1Xr0/0.jpg)](https://www.youtube.com/watch?v=pGzj9NH1Xr0)

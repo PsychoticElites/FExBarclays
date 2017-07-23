@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/linearLayout2"
+    android:background="@drawable/mainlayoutbg"
+    android:weightSum="100">
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:entries="@array/maptype_arrays" />
+    <fragment
+        android:id="@+id/Map"
+        android:layout_height="456.0dp"
+        android:layout_width="match_parent"
+        android:name="com.google.android.gms.maps.MapFragment"
+        android:layout_weight="90"
+        android:layout_margin="2dp" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout4"
+        android:layout_gravity="center|bottom"
+        android:gravity="center"
+        android:padding="10dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp">
+        <Button
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/buttonRestRoom"
+            android:background="@drawable/restrooms"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:hapticFeedbackEnabled="true"
+            android:padding="10dp" />
+        <Button
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/buttonCafe"
+            android:background="@drawable/cafe"
+            android:layout_marginRight="7.5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="7.5dp"
+            android:hapticFeedbackEnabled="true" />
+        <Button
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/buttonGrandStand"
+            android:background="@drawable/grandstand"
+            android:layout_marginLeft="7.5dp"
+            android:layout_marginRight="7.5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:hapticFeedbackEnabled="true" />
+        <Button
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/buttonFEHQ"
+            android:background="@drawable/webfelogo"
+            android:layout_marginBottom="5dp"
+            android:layout_marginRight="7.5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="7.5dp"
+            android:hapticFeedbackEnabled="true" />
+        <Button
+            android:id="@+id/buttonLocation"
+            android:background="@drawable/ic_location"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginRight="7.5dp"
+            android:hapticFeedbackEnabled="true"
+            android:layout_marginLeft="10dp"
+            android:layout_gravity="right|center"
+            android:gravity="right" />
+    </LinearLayout>
+</LinearLayout>

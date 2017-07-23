@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="Hello">Hello World, Click Me!</string>
+    <string name="ApplicationName">Hackathon-HCL</string>
+  <string name="drawer_open">Open</string>
+  <string name="ApplicationName">Barclays Bank</string>
+  <string name="drawer_close">Close</string>
+    <string name="SignupString">No Account ? <b>
+      <u>Sign up.</u>
+    </b>
+  </string>
+    <string name="LoginString">Already have an Account ? <b><u>Log in.</u></b></string>
+  <string name="StringCountry">"Choose a11 Country Code"</string>
+  <string-array name="Country_Code">
+    <item>---Country Code---</item>
+    <item>+91 - India</item>
+    <item>+01 - United States</item>
+    <item>+66 - Thailand</item>
+    <item>+94 - Sri Lanka</item>
+    <item>+84 - Vietnam</item>
+  </string-array>
+  <string name="maps_key">YOUR_API_KEY</string>
+</resources>
