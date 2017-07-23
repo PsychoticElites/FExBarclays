@@ -13,8 +13,7 @@ namespace Hackathon_HCL
     [Activity(Label = "Sample Data", Theme = "@style/Theme.DesignDemo", Icon = "@drawable/icon")]
     public class SampleExp : AppCompatActivity
     {
-        DrawerLayout drawerLayout;
-        NavigationView navigationView;
+        
         protected override void OnCreate(Bundle bundle)
         {
 

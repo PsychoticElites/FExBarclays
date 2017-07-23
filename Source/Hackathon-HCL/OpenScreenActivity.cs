@@ -12,8 +12,8 @@ namespace Hackathon_HCL
     public class OpenScreenActivity : Activity
     {
 
-        private ImageButton OpenFE;
-        private ImageButton OpenBarclays;
+        
+        
         protected override void OnCreate(Bundle savedInstanceState)
         {
             this.RequestWindowFeature(WindowFeatures.NoTitle);

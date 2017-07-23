@@ -10,10 +10,9 @@ namespace Hackathon_HCL
     [Activity(Label = "driverInfoScreen", Theme = "@style/Theme.AppCompat.Light.NoActionBar", ScreenOrientation = ScreenOrientation.Portrait)]
     public class driverInfoScreen : AppCompatActivity
     {
-        private List<driverInfo> mItem;
-        private ListView mListView;
+        
         public string sample1;
-        protected async override void OnCreate(Bundle savedInstanceState)
+        protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.driverInfoListView);

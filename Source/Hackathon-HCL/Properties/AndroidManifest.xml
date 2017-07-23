@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="HackathonHCL.FormulaE2" android:versionCode="1" android:versionName="1.0" android:installLocation="auto">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="FExBarclays.HackathonHCL" android:versionCode="1" android:versionName="1.1" android:installLocation="auto">
 	<uses-sdk android:minSdkVersion="21" />
 	<uses-feature android:glEsVersion="0x00020000" android:required="true" />
 	<uses-permission android:name="android.permission.INTERNET" />
@@ -13,7 +13,7 @@
 	<uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" />
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-	<application android:label="Formula E - Live" android:icon="@drawable/ic_feLogo">
+	<application android:label="FExBarclays" android:icon="@drawable/ic_feLogo">
 		<meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="@string/maps_key" />
 		<meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
 	</application>

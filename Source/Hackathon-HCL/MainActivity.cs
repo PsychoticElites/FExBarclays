@@ -21,15 +21,9 @@ namespace Hackathon_HCL
     {
         private Button LiveRaces;
         private Button ViewMap;
-        private Button Barclays;
-        private ImageButton connectFB1;
-        private ImageButton connectTwitter1;
-        private ImageButton connectInsta1;
-        private ImageButton connectUtube1;
+        
         private RadialProgressView day, hour, minute;
-        int dayValue = 0;
-        int hourValue = 0;
-        int minuteValue = 0;
+        
         private LinearLayout layoutDate, layoutHours, layoutMinutes;
         DrawerLayout drawerLayout;
         NavigationView navigationView;

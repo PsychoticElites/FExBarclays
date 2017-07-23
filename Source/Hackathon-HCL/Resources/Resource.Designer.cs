@@ -2405,8 +2405,26 @@ namespace Hackathon_HCL
 			// aapt resource value: 0x7f020053
 			public const int avd_hide_password = 2130837587;
 			
+			// aapt resource value: 0x7f0200d2
+			public const int avd_hide_password_1 = 2130837714;
+			
+			// aapt resource value: 0x7f0200d3
+			public const int avd_hide_password_2 = 2130837715;
+			
+			// aapt resource value: 0x7f0200d4
+			public const int avd_hide_password_3 = 2130837716;
+			
 			// aapt resource value: 0x7f020054
 			public const int avd_show_password = 2130837588;
+			
+			// aapt resource value: 0x7f0200d5
+			public const int avd_show_password_1 = 2130837717;
+			
+			// aapt resource value: 0x7f0200d6
+			public const int avd_show_password_2 = 2130837718;
+			
+			// aapt resource value: 0x7f0200d7
+			public const int avd_show_password_3 = 2130837719;
 			
 			// aapt resource value: 0x7f020055
 			public const int barclaysbg = 2130837589;

@@ -49,7 +49,7 @@ namespace Hackathon_HCL
 
         // Declaration of variables Ends Here.
 
-        private string userLatitude, userLongitude, branchLatitude, branchLongitude;
+        private string userLatitude, userLongitude;
 
 
         protected async override void OnCreate(Bundle bundle)
