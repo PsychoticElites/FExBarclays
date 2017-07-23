@@ -14,26 +14,26 @@ Whole android application is built on .Net and Xamarin Framework, and hence, can
 
 ## 2. Objectives
   - User Friendly Interface
-o A more engaging and easy-to-use Graphical User Interface for all types of users, ranging from developers to non-technical users.
-o Live feed of overall track, driver's view and more.
+    -    A more engaging and easy-to-use Graphical User Interface for all types of users, ranging from developers to non-technical users.
+    -    Live feed of overall track, driver's view and more.
 
  - Trackside Wayfinding
-o Application provides clear and detailed annotated Google maps along with Street-View of the stadium facilities for easier navigation of users present at stand on the day of race.
-o It enables race-goers to find all the basic necessities like Restrooms, Cafeterias or Grandstands and easily navigate to them using Google Street Navigation.
+    -    Application provides clear and detailed annotated Google maps along with Street-View of the stadium facilities for easier navigation of users present at stand on the day of race.
+    -    It enables race-goers to find all the basic necessities like Restrooms, Cafeterias or Grandstands and easily navigate to them using Google Street Navigation.
 
 - Unified Application
-o Application provides both, user-friendly management and a near real-time view of the ongoing races.
-o Hub for all Formula - E activities such as "Upcoming Races", "Driver's Profile", "Track Overview", and constantly updated Formula - E News for Hardcore Fans.
+    -    Application provides both, user-friendly management and a near real-time view of the ongoing races.
+    -    Hub for all Formula - E activities such as "Upcoming Races", "Driver's Profile", "Track Overview", and constantly updated Formula - E News for Hardcore Fans.
 
 - User customized Live Feed
-o Users can choose Live-Feeds as their preferences.
-o User can choose between 4 different camera modes (specified by circuit's camera settings), like driver camera, track overview, TV camera and aerial feed.
+    -    Users can choose Live-Feeds as their preferences.
+    -    User can choose between 4 different camera modes (specified by circuit's camera settings), like driver camera, track overview, TV camera and aerial feed.
 
 - Faster and More Efficient
-o Application is fast to boot-up and load all required data requested by user.
-o Application uses Cache to pre-fetch the resources.
-o Low RAM usage ensures efficient working of application.
-o Smoother animations and transitions during operation of application.
+    -    Application is fast to boot-up and load all required data requested by user.
+    -    Application uses Cache to pre-fetch the resources.
+    -    Low RAM usage ensures efficient working of application.
+    -    Smoother animations and transitions during operation of application.
 
 
 ## 3. Challenges
