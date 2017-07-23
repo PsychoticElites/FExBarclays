@@ -110,24 +110,24 @@ If selected for the 3rd round, we would like to optimize this application furthe
 
 -    ### Frameworks
 
-    - Xamarin Framework– to develop native portable Android Application in C#
-    - .NET Framework– to use Microsoft’s Visual Studio and C# basic packages.
+       - Xamarin Framework– to develop native portable Android Application in C#
+       - .NET Framework– to use Microsoft’s Visual Studio and C# basic packages.
 
 -    ### Packages
 
-    - C# Basic Packages– provided by Microsoft.
-    - Newtonsoft – To parse JSON data.
-    - Google Accessibility Packages – to utilize the microphone and other resources.
-    - Google Play Services – Packages provided by Google for Android Development.
+       - C# Basic Packages– provided by Microsoft.
+       - Newtonsoft – To parse JSON data.
+       - Google Accessibility Packages – to utilize the microphone and other resources.
+       - Google Play Services – Packages provided by Google for Android Development.
 
 -    ### Application Programmable Interfaces (APIs)
 
-    - Google Maps – to Implement Wayfinding Services.
-    - Live Video Feeds – provided by Formula E, to Implement 4 Screen viewing in the proposed application.
+       - Google Maps – to Implement Wayfinding Services.
+       - Live Video Feeds – provided by Formula E, to Implement 4 Screen viewing in the proposed application.
 
 -    ### VR Engine
 
-    - Unreal Engine 4– to develop and implement Virtual Reality (VR) mode of the proposed application.
+       - Unreal Engine 4– to develop and implement Virtual Reality (VR) mode of the proposed application.
 
 ## 8.	Team’s Area of Expertise
 - ### Front End Developer
