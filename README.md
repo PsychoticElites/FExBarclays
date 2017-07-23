@@ -12,7 +12,7 @@
 * [Extra Features](#5-extra-features)
 * [Running The Project](#6----running-the-project)
     * [Permissions Required](#permissions-required-)
-    * [Instructions For Normal Users](#normal-users-)
+    * [Instructions For Direct APK Installation](#normal-users-)
     * [Instructions For Developers/Testers](#developerstesters-)
 * [Wirefram/Mockup](#7----wireframmockup)
 * [Future Scope/ To Do](#8-future-scope-to-do)
@@ -27,7 +27,7 @@
 * [Team's Achievements and Experience](#11--teams-achievements-and-experience)
 * [Team](#12--team)
 
-## 1. Introduction
+## 1.   Introduction
 This application aims to complete the challenges 1, 2 and 4 of the UI/UX Theme of #UNITEDBYHCL Hackathon, 2017. This application is in prototype phase, but works like any full scale deployed application. With this Formula E application users can Sign Up, Log In, view upcoming races, Driver’s information, watch Live streams of the ongoing events and find any nearby places to explore by using the integrated Google Maps. Furthermore, the users can also locate the nearest Barclays Bank ATM or Branch using voice enabled commands specially designed for visually impaired people.
 
 The application also implements Street-View of the race-venue that helps race-goers find nearby Restrooms, Grandstands, Cafeterias or any other basic necessities. As mentioned in our “Idea Phase”, we have successfully implemented all the features and have managed to merge it in an “all-in-one” android application.
@@ -37,7 +37,7 @@ Whole android application is built on .Net and Xamarin Framework, and hence, can
 
 > The libraries used in this project are mostly (if not all) Open Source and Free to use and distribute. The video streams used in this project are not owned by us and all the copyright belongs to the original author. This application was built for sole purpose of competing in [#UNITEDBYHCL Hackathon](https://www.hackerearth.com/sprints/unitedbyhcl/). We do not claim any copyright on the streams/external libraries.
 
-## 2. Objectives
+## 2.   Objectives
   - User Friendly Interface
     -    A more engaging and easy-to-use Graphical User Interface for all types of users, ranging from developers to non-technical users.
     -    Live feed of overall track, driver's view and more.
@@ -61,7 +61,7 @@ Whole android application is built on .Net and Xamarin Framework, and hence, can
     -    Smoother animations and transitions during operation of application.
 
 
-## 3. Challenges
+## 3.   Challenges
  - ## Challenge 01 (Trackside Wayfinding) 
      - As mentioned in the introduction section, we have successfully implemented the Trackside wayfinding for Formula E circuits. We have leveraged Google Maps and have incorporated it into our application to show the race-goers the important information about the area around them.
 Whether you need a restaurant to satisfy your hunger, or you need to find the closest restroom, or maybe you wanted to check out the Grandstand or Formula E headquarter, we’ve got you covered.
@@ -84,7 +84,7 @@ Application recites nearest ATM’s location and its distance from user’s curr
 
      - To enhance User experience, if any ATM near the user (5000 meters) or the bank branch is currently opened, then it’ll automatically open the default Maps application to find the shortest route to it and highlight it on the map. User just need to start their journey. 
 
-## 4. Features
+## 4.   Features
 This prototype application contains some of the Industry-standard features such as 
 - Material Design.
 - Faster Bootup.
@@ -98,7 +98,7 @@ This prototype application contains some of the Industry-standard features such 
 - Ticket Booking.
 - Social Media Interaction
 
-## 5. Extra Features
+## 5.   Extra Features
 We have also tried to incorporate few extra features in the application for the users. 
 - Users can buy tickets.
 - Check out upcoming race events.
@@ -116,11 +116,11 @@ Driver information and race schedules are fetched on the fly via APIs we’ve ma
     - Read Google Service Configuration
     - Prevent Phone From Sleeping (For Video Streaming and Maps)
     
-- #### Instructions For Normal Users :
+- #### Instructions For Direct APK Installation :
     If you want to run this application on your android phone, please move over to the "[`Release`](https://github.com/PsychoticElites/FExBarclays/releases)" section and download the latest stable APK build for your android phone. You do not need any external libraries or application.
 
 - #### Instructions For Developers/Testers :
-     If you're a developer or any user who wishes to test this application and run this android project, it's recommended to install Visual Studio with Xamarin Support and Android SDKs on your system. Remember that Android SDKs should be in your local path for you to be able to compile the project properly.
+     If you're a developer or any user who wishes to test this application and run this android project, it's recommended to install Visual Studio with Xamarin Support and Android SDKs on your system. Remember that Android SDKs should be in your local path for you to be able to compile the project properly. You can find the source code in the "[SOURCE](https://github.com/PsychoticElites/FExBarclays/tree/master/Source)" directory.
 
     If you do not happen to have Visual Studio, it is recommended to get it because it'll download all the required packages on its own, if they're not present. You can use Visual Studio's Free Community Edition. It'll work, as we've developed this application on it.
 But, if for some reason, you don't want to or can't install Visual Studio, you will need to have .NET, Xamarin, Android SDK and required Packages in your system's local path for you to be able to compile and execute this application project.
@@ -133,7 +133,7 @@ You can check the Demonstration Video On YouTube :
 The image below represents the Wirefram/Mockup of the entire application.You might want to zoom in, becasue the image has resolution of aruond 8k.
 [![N|Solid](https://github.com/PsychoticElites/FExBarclays/blob/master/Images/WireFrame.jpg?raw=true)](https://github.com/PsychoticElites/FExBarclays/blob/master/Images/WireFrame.jpg?raw=true)
 
-## 8. Future Scope/ To Do
+## 8.   Future Scope/ To Do
 If selected for the 3rd round, we would like to optimize this application further and add some more features in this application, like 
 - VR ready streams.
 - Add an upcoming event in user's schedule.
@@ -141,7 +141,7 @@ If selected for the 3rd round, we would like to optimize this application furthe
 - Simplify the problems faced by a race-goer.
 - More features to mesmerize the experience of Users.
 
-## 9. Technology Stack Used
+## 9.   Technology Stack Used
 - ### Front End Development
 
     - ##### User Interface design:
