@@ -1,6 +1,19 @@
 [![N|Solid](https://github.com/PsychoticElites/FExBarclays/blob/master/Images/webFELogo2.jpg?raw=true)](https://github.com/PsychoticElites/FExBarclays)
 # FExBarclays
 
+## Table of Content
+* [Introduction]()
+* [Objectives]()
+* [Challenges](#installation)
+* [Features](#python-support)
+* [Extra Features](#windows-binary)
+* [Running The Project](#list-of-arguments)
+* [Future Scope/ To Do](#usage)
+    * [Windows](#windows)
+* [Technology Stack Used](#features)
+* [Team’s Area of Expertise](#9-teams-area-of-expertise)
+* [Team's Achievements and Experience](#10--teams-achievements-and-experience)
+* [Team](#10--team)
 
 ## 1. Introduction
 This application aims to complete the challenges 1, 2 and 4 of the UI/UX Theme of #UNITEDBYHCL Hackathon, 2017. This application is in prototype phase, but works like any full scale deployed application. With this Formula E application users can Sign Up, Log In, view upcoming races, Driver’s information, watch Live streams of the ongoing events and find any nearby places to explore by using the integrated Google Maps. Furthermore, the users can also locate the nearest Barclays Bank ATM or Branch using voice enabled commands specially designed for visually impaired people.
@@ -42,7 +55,7 @@ Whole android application is built on .Net and Xamarin Framework, and hence, can
 Whether you need a restaurant to satisfy your hunger, or you need to find the closest restroom, or maybe you wanted to check out the Grandstand or Formula E headquarter, we’ve got you covered.
 Users can simply tap on the annotated places to find information regarding the same. We’ve categorized everything, so you don’t have to go through a large list of text, just to find a restaurant. Just tap on the intended category, and the application will show you all the closest Restrooms/Restaurants/Grandstands etc.
 
-     - Our trackside wayfinding doesn’t stop at this, just showing the annotated map won’t help the user much. Therefore, you can also choose to get directions to navigate from your current GPS location to your intended destination, since our application is backed by the powerful Google Maps, you get detailed information about the road conditions to avoid traffic or find the shortest routes.
+     - ur trackside wayfinding doesn’t stop at this, just showing the annotated map won’t help the user much. Therefore, you can also choose to get directions to navigate from your current GPS location to your intended destination, since our application is backed by the powerful Google Maps, you get detailed information about the road conditions to avoid traffic or find the shortest routes.
 
 - ## Challenge 02 (Second Screen Viewing at Trackside)
      - To enhance User experience, we decided to merge the Challenge 2, i.e. Second Screen Viewing At Trackside into Challenge 1. 
@@ -100,7 +113,11 @@ Driver information and race schedules are fetched on the fly via APIs we’ve ma
     If you do not happen to have Visual Studio, it is recommended to get it because it'll download all the required packages on its own, if they're not present. You can use Visual Studio's Free Community Edition. It'll work, as we've developed this application on it.
 But, if for some reason, you don't want to or can't install Visual Studio, you will need to have .NET, Xamarin, Android SDK and required Packages in your system's local path for you to be able to compile and execute this application project.
 
-## 7. Future Scope/ To Do
+## 7.    Wirefram/Mockup
+The image below represents the Wirefram/Mockup of the entire application.You might want to zoom in, becasue the image has resolution of aruond 8k.
+![FExBarclays WireFrame]((https://github.com/PsychoticElites/FExBarclays/blob/master/Images/WireFrame.jpg?raw=true)
+
+## 8. Future Scope/ To Do
 If selected for the 3rd round, we would like to optimize this application further and add some more features in this application, like 
 - VR ready streams.
 - Add an upcoming event in user's schedule.
@@ -108,7 +125,7 @@ If selected for the 3rd round, we would like to optimize this application furthe
 - Simplify the problems faced by a race-goer.
 - More features to mesmerize the experience of Users.
 
-## 8. Technology Stack Used
+## 9. Technology Stack Used
 - ### Front End Development
 
     - ##### User Interface design:
@@ -149,7 +166,7 @@ If selected for the 3rd round, we would like to optimize this application furthe
 
        - Unreal Engine 4– to develop and implement Virtual Reality (VR) mode of the proposed application.
 
-## 9. Team’s Area of Expertise
+## 10.  Team’s Area of Expertise
 - ### Front End Developer
     - **Ankit Passi** **(** UI/UX Designer **)**
 • Photoshop
@@ -192,7 +209,7 @@ If selected for the 3rd round, we would like to optimize this application furthe
 • Xamarin Framework
 • Google Play Services
 
-## 10.  Team's Achievements and Experience
+## 11.  Team's Achievements and Experience
 - ### Rajasthan Hackathon 2017 ([Project Link](https://github.com/PsychoticElites/Rajasthan-Sign-On-GOR-Hackathon-Project-))
     - Developed a Stand-Alone Windows application which incorporated 2 leading User Services, “Bhamashah” and “e-Mitra” to create a User Friendly and Efficient application which focuses on performing major tasks with little-or-no Extra Inputs from User ensuring minimal interaction from User side, yet performing crucial tasks.
     
@@ -202,7 +219,7 @@ If selected for the 3rd round, we would like to optimize this application furthe
 - ### ICICI Hackathon 2017
     - Developed an Android application which introduces a new Method for Visually-Challenged People to interact and use Bank Services such as performing Fund Transfers, Bill Payment and checking Account Details.
 
-## 10.  Team
+## 12.  Team
 ### Team Name : Psychotic Elites
 - #### [Dhruv Kanojia](https://github.com/Xonshiz) (Lead Developer)
 - #### [Ankit Pass](https://github.com/ankitpassi141) (UI/UX Designer)
