@@ -2,7 +2,7 @@
 # FExBarclays
 
 
-## 1.	Introduction
+## 1. Introduction
 This application aims to complete the challenges 1, 2 and 4 of the UI/UX Theme of #UNITEDBYHCL Hackathon, 2017. This application is in prototype phase, but works like any full scale deployed application. With this Formula E application users can Sign Up, Log In, view upcoming races, Driver’s information, watch Live streams of the ongoing events and find any nearby places to explore by using the integrated Google Maps. Furthermore, the users can also locate the nearest Barclays Bank ATM or Branch using voice enabled commands specially designed for visually impaired people.
 
 The application also implements Street-View of the race-venue that helps race-goers find nearby Restrooms, Grandstands, Cafeterias or any other basic necessities. As mentioned in our “Idea Phase”, we have successfully implemented all the features and have managed to merge it in an “all-in-one” android application.
@@ -10,32 +10,33 @@ The application also implements Street-View of the race-venue that helps race-go
 Our prototype completes the “Trackside Wayfinding” and “Second Screen Viewing at Trackside”, for Formula E. And, it also completes “iSight”, for Barclays. Please check the further sections to know more about these features in detail.
 Whole android application is built on .Net and Xamarin Framework, and hence, can also be ported across platforms like - iOS and Windows.
 
+> The libraries used in this project are mostly (if not all) Open Source and Free to use and distribute. The video streams used in this project are not owned by us and all the copyright belongs to the original author. This application was built for sole purpose of competing in [#UNITEDBYHCL Hackathon](https://www.hackerearth.com/sprints/unitedbyhcl/). We do not claim any copyright on the streams/external libraries.
 
-## 2.	Objectives
+## 2. Objectives
   - User Friendly Interface
-o	A more engaging and easy-to-use Graphical User Interface for all types of users, ranging from developers to non-technical users.
-o	Live feed of overall track, driver's view and more.
+o A more engaging and easy-to-use Graphical User Interface for all types of users, ranging from developers to non-technical users.
+o Live feed of overall track, driver's view and more.
 
  - Trackside Wayfinding
-o	Application provides clear and detailed annotated Google maps along with Street-View of the stadium facilities for easier navigation of users present at stand on the day of race.
-o	It enables race-goers to find all the basic necessities like Restrooms, Cafeterias or Grandstands and easily navigate to them using Google Street Navigation.
+o Application provides clear and detailed annotated Google maps along with Street-View of the stadium facilities for easier navigation of users present at stand on the day of race.
+o It enables race-goers to find all the basic necessities like Restrooms, Cafeterias or Grandstands and easily navigate to them using Google Street Navigation.
 
 - Unified Application
-o	Application provides both, user-friendly management and a near real-time view of the ongoing races.
-o	Hub for all Formula - E activities such as "Upcoming Races", "Driver's Profile", "Track Overview", and constantly updated Formula - E News for Hardcore Fans.
+o Application provides both, user-friendly management and a near real-time view of the ongoing races.
+o Hub for all Formula - E activities such as "Upcoming Races", "Driver's Profile", "Track Overview", and constantly updated Formula - E News for Hardcore Fans.
 
 - User customized Live Feed
-o	Users can choose Live-Feeds as their preferences.
-o	User can choose between 4 different camera modes (specified by circuit's camera settings), like driver camera, track overview, TV camera and aerial feed.
+o Users can choose Live-Feeds as their preferences.
+o User can choose between 4 different camera modes (specified by circuit's camera settings), like driver camera, track overview, TV camera and aerial feed.
 
 - Faster and More Efficient
-o	Application is fast to boot-up and load all required data requested by user.
-o	Application uses Cache to pre-fetch the resources.
-o	Low RAM usage ensures efficient working of application.
-o	Smoother animations and transitions during operation of application.
+o Application is fast to boot-up and load all required data requested by user.
+o Application uses Cache to pre-fetch the resources.
+o Low RAM usage ensures efficient working of application.
+o Smoother animations and transitions during operation of application.
 
 
-## 3.	Challenges
+## 3. Challenges
  - ## Challenge 01 (Trackside Wayfinding) 
      - As mentioned in the introduction section, we have successfully implemented the Trackside wayfinding for Formula E circuits. We have leveraged Google Maps and have incorporated it into our application to show the race-goers the important information about the area around them.
 Whether you need a restaurant to satisfy your hunger, or you need to find the closest restroom, or maybe you wanted to check out the Grandstand or Formula E headquarter, we’ve got you covered.
@@ -58,7 +59,7 @@ Application recites nearest ATM’s location and its distance from user’s curr
 
      - To enhance User experience, if any ATM near the user (5000 meters) or the bank branch is currently opened, then it’ll automatically open the default Maps application to find the shortest route to it and highlight it on the map. User just need to start their journey. 
 
-## 4.	Features
+## 4. Features
 This prototype application contains some of the Industry-standard features such as 
 - Material Design.
 - Faster Bootup.
@@ -72,7 +73,7 @@ This prototype application contains some of the Industry-standard features such 
 - Ticket Booking.
 - Social Media Interaction
 
-## 5.	Extra Features
+## 5. Extra Features
 We have also tried to incorporate few extra features in the application for the users. 
 - Users can buy tickets.
 - Check out upcoming race events.
@@ -80,7 +81,26 @@ We have also tried to incorporate few extra features in the application for the 
 - Detailed information on Formula E drivers etc.
 Driver information and race schedules are fetched on the fly via APIs we’ve made for test purposes. So, the information is updated at one end and the change is reflected in real-time on the devices everywhere else.
 
-## 6.	Future Scope/ To Do
+# 6.    Running The Project
+- ### Permissions Required :
+    This application requires you to provide few permissions to it, in order to work properly. Here's the list of permissions that the application needs :
+    - Internet Access
+    - GPS Location
+    - View WiFi Connections
+    - Storage (Read/Write Perms For Cache)
+    - Read Google Service Configuration
+    - Prevent Phone From Sleeping (For Video Streaming and Maps)
+    
+- #### Normal Users :
+    If you want to run this application on your android phone, please move over to the "[`Release`](https://github.com/PsychoticElites/FExBarclays/releases)" section and download the latest stable APK build for your android phone. You do not need any external libraries or application.
+
+- #### Developers/Testers :
+     If you're a developer or any user who wishes to test this application and run this android project, it's recommended to install Visual Studio with Xamarin Support and Android SDKs on your system. Remember that Android SDKs should be in your local path for you to be able to compile the project properly.
+
+    If you do not happen to have Visual Studio, it is recommended to get it because it'll download all the required packages on its own, if they're not present. You can use Visual Studio's Free Community Edition. It'll work, as we've developed this application on it.
+But, if for some reason, you don't want to or can't install Visual Studio, you will need to have .NET, Xamarin, Android SDK and required Packages in your system's local path for you to be able to compile and execute this application project.
+
+## 7. Future Scope/ To Do
 If selected for the 3rd round, we would like to optimize this application further and add some more features in this application, like 
 - VR ready streams.
 - Add an upcoming event in user's schedule.
@@ -88,7 +108,7 @@ If selected for the 3rd round, we would like to optimize this application furthe
 - Simplify the problems faced by a race-goer.
 - More features to mesmerize the experience of Users.
 
-## 7.	Technology Stack Used
+## 8. Technology Stack Used
 - ### Front End Development
 
     - ##### User Interface design:
@@ -129,50 +149,50 @@ If selected for the 3rd round, we would like to optimize this application furthe
 
        - Unreal Engine 4– to develop and implement Virtual Reality (VR) mode of the proposed application.
 
-## 8.	Team’s Area of Expertise
+## 9. Team’s Area of Expertise
 - ### Front End Developer
     - **Ankit Passi** **(** UI/UX Designer **)**
-•	Photoshop
-•	GIMP
-•	Illustrator
-•	C#
-•	C++
-•	Xamarin Framework
-•	VR Developer
-•	well-versed with Unreal Engine Visual Scripting.
+• Photoshop
+• GIMP
+• Illustrator
+• C#
+• C++
+• Xamarin Framework
+• VR Developer
+• well-versed with Unreal Engine Visual Scripting.
 
 
 - ### Back End Developers
     - **Dhruv Kanojia** **(** Lead Developer **)**
-•	Python
-•	C#
-•	Core Java
-•	JSON
-•	PHP
-•	.NET Framework
-•	Xamarin Framework
-•	Web Development
-•	Google Accessibility Packages
+• Python
+• C#
+• Core Java
+• JSON
+• PHP
+• .NET Framework
+• Xamarin Framework
+• Web Development
+• Google Accessibility Packages
  
     - **Devesh Shyngle** **(** Programmer & Security Professional **)**
-•	C#
-•	C++
-•	PHP
-•	.NET Framework
-•	Xamarin Framework
-•	Google Play Services
-•	Web Development
-•	Security Optimizer
-•	Bug Tester
+• C#
+• C++
+• PHP
+• .NET Framework
+• Xamarin Framework
+• Google Play Services
+• Web Development
+• Security Optimizer
+• Bug Tester
 
     - **Shubham Dwivedi** **(** Assistant Programmer **)**
-•	C#
-•	C++
-•	.NET Framework
-•	Xamarin Framework
-•	Google Play Services
+• C#
+• C++
+• .NET Framework
+• Xamarin Framework
+• Google Play Services
 
-## 9.	Team's Achievements and Experience
+## 10.  Team's Achievements and Experience
 - ### Rajasthan Hackathon 2017 ([Project Link](https://github.com/PsychoticElites/Rajasthan-Sign-On-GOR-Hackathon-Project-))
     - Developed a Stand-Alone Windows application which incorporated 2 leading User Services, “Bhamashah” and “e-Mitra” to create a User Friendly and Efficient application which focuses on performing major tasks with little-or-no Extra Inputs from User ensuring minimal interaction from User side, yet performing crucial tasks.
     
@@ -182,7 +202,7 @@ If selected for the 3rd round, we would like to optimize this application furthe
 - ### ICICI Hackathon 2017
     - Developed an Android application which introduces a new Method for Visually-Challenged People to interact and use Bank Services such as performing Fund Transfers, Bill Payment and checking Account Details.
 
-## 10.	Team
+## 10.  Team
 ### Team Name : Psychotic Elites
 - #### [Dhruv Kanojia](https://github.com/Xonshiz) (Lead Developer)
 - #### [Ankit Pass](https://github.com/ankitpassi141) (UI/UX Designer)
