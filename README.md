@@ -137,7 +137,7 @@ You can check the Demonstration Video On YouTube :
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/pGzj9NH1Xr0/0.jpg)](https://www.youtube.com/watch?v=pGzj9NH1Xr0)
 
 ## 7.    Wireframe/Mockup
-The image below represents the Wirefram/Mockup of the entire application.You might want to zoom in, becasue the image has resolution of aruond 8k.
+The image below represents the Wireframe/Mockup of the entire application.You might want to zoom in, because the image has a resolution of around 8k.
 [![N|Solid](https://github.com/PsychoticElites/FExBarclays/blob/master/Images/WireFrame.jpg?raw=true)](https://github.com/PsychoticElites/FExBarclays/blob/master/Images/WireFrame.jpg?raw=true)
 
 ## 8.   Future Scope/ To Do
