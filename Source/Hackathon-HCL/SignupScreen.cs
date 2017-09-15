@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+
 using Android.App;
 using Android.Content;
 using Android.OS;
@@ -24,11 +25,14 @@ namespace Hackathon_HCL
         private Boolean signupStatus;
         private ProgressBar spinner;
         private Spinner SpinnerCountryCode;
+        private ScrollView FESignupMainLayout;
+        private LinearLayout FESignupProgressBar;
 
         protected override void OnCreate(Bundle bundle)
         {
             this.RequestWindowFeature(WindowFeatures.NoTitle);
             base.OnCreate(bundle);
+            // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.SignupScreen);
 
             FindViews();
@@ -40,8 +44,8 @@ namespace Hackathon_HCL
             Typeface tf = Typeface.CreateFromAsset(Assets, "Khula-Regular.ttf");
             Typeface tf1 = Typeface.CreateFromAsset(Assets, "Khula-Light.ttf");
             Typeface tf2 = Typeface.CreateFromAsset(Assets, "PoppinsMedium.ttf");
-            SignupLoginProceed = FindViewById<TextView>(Resource.Id.SignupLogin);
-            SignupLoginProceed.SetTypeface(tf1, TypefaceStyle.Bold);
+            //SignupLoginProceed = FindViewById<TextView>(Resource.Id.SignupLogin);
+            //SignupLoginProceed.SetTypeface(tf1, TypefaceStyle.Bold);
             SignupProceed = FindViewById<Button>(Resource.Id.SignupButton);
             SignupProceed.SetTypeface(tf2, TypefaceStyle.Bold);
             signupName = FindViewById<TextView>(Resource.Id.SignupName);
@@ -53,13 +57,16 @@ namespace Hackathon_HCL
             signupPhone = FindViewById<TextView>(Resource.Id.SignupPhone);
             signupPhone.SetTypeface(tf, TypefaceStyle.Normal);
             spinner = FindViewById<ProgressBar>(Resource.Id.progressBar2);
-            var SignupLogin1 = FindViewById<TextView>(Resource.Id.SignupLogin);
-            SignupLogin1.SetTypeface(tf, TypefaceStyle.Bold);
+            //var SignupLogin1 = FindViewById<TextView>(Resource.Id.SignupLogin);
+            FESignupMainLayout = FindViewById<ScrollView>(Resource.Id.FESignuplinearLayout_MainLayout);
+            FESignupProgressBar = FindViewById<LinearLayout>(Resource.Id.FESignuplinearLayout_ProgressBar);
+            //SignupLogin1.SetTypeface(tf, TypefaceStyle.Bold);
             SpinnerCountryCode = FindViewById<Spinner>(Resource.Id.SignupSpinnerCountry);
-
+            SpinnerCountryCode.Prompt = "Choose the Country Code";
             //Code for Drop Down list of Country Code
             SpinnerCountryCode.ItemSelected += new EventHandler<AdapterView.ItemSelectedEventArgs>(spinner_ItemSelected);
             var adapter = ArrayAdapter.CreateFromResource(this, Resource.Array.Country_Code, Android.Resource.Layout.SimpleSpinnerItem);
+            //var adapter = ArrayAdapter.CreateFromResource(this, Resource.Array.Country_Code, Android.Resource.Drawable.spinn);
             adapter.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
             SpinnerCountryCode.Adapter = adapter;
         }
@@ -71,11 +78,11 @@ namespace Hackathon_HCL
 
             string toast = string.Format("{0}", spinner.GetItemAtPosition(e.Position));
             countryCodeSelected = toast.Substring(0, 3); //Selects only first 3 letters of Country Code : '+91 - India' will change to '+91'
-        
+            //signupPhone.Text = countryCodeSelected + "-";
         }
         private void HandleEvents()
         {
-            SignupLoginProceed.Click += SignupLoginProceed_Click;
+            //SignupLoginProceed.Click += SignupLoginProceed_Click;
             SignupProceed.Click += async (sender, e) =>
             {
                 finalPhoneNumber = countryCodeSelected + "-" + signupPhone.Text;
@@ -106,13 +113,14 @@ namespace Hackathon_HCL
                     {
                         if (Android.Util.Patterns.EmailAddress.Matcher(signupEmail.Text).Matches())
                         {
-                            spinner.Visibility = ViewStates.Visible;
-
+                            FESignupProgressBar.Visibility = ViewStates.Visible;
+                            FESignupMainLayout.Visibility = ViewStates.Gone;
                             await Task.Run(() => SignUpPoster(signupName.Text, signupEmail.Text, finalPhoneNumber, signupPassword.Text));
 
 
                             if (this.signupStatus == true)
                             {
+                                // Upon successful sign up, we move forward to next screen!
                                 var IntentLoginProceed = new Intent(this, typeof(MainActivity));
                                 StartActivity(IntentLoginProceed);
                                 Finish();
@@ -122,7 +130,8 @@ namespace Hackathon_HCL
                                 Toast.MakeText(this, this.message, ToastLength.Long).Show(); //Showing Bad Connection Error
                             }
 
-                            spinner.Visibility = ViewStates.Gone;
+                            FESignupProgressBar.Visibility = ViewStates.Gone;
+                            FESignupMainLayout.Visibility = ViewStates.Visible;
                         }
                         else
                         {
@@ -136,15 +145,18 @@ namespace Hackathon_HCL
         }
 
 
-        private void SignupLoginProceed_Click(object sender, EventArgs e)
-        {
-            var IntentSignupLoginProceed = new Intent(this, typeof(LoginScreen));
-            StartActivity(IntentSignupLoginProceed);
-            Finish();
-        }
+        //private void SignupLoginProceed_Click(object sender, EventArgs e)
+        //{
+        //    var IntentSignupLoginProceed = new Intent(this, typeof(LoginScreen));
+        //    StartActivity(IntentSignupLoginProceed);
+        //    Finish();
+        //}
 
         private async Task SignUpPoster(string name, string email, string phoneNumber, string password)
         {
+            //Console.WriteLine("Email Id : " + userEmail);
+            //Console.WriteLine("Password : " + userPassword);
+
             HttpClientHandler handler = new HttpClientHandler()
             {
                 AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate
@@ -156,6 +168,7 @@ namespace Hackathon_HCL
                 client.BaseAddress = new Uri("https://xonshiz.heliohost.org");
                 var content = new FormUrlEncodedContent(new[]
                 {
+                //new KeyValuePair<string, string>("", "login")
                 new KeyValuePair<string, string>("name", name),
                 new KeyValuePair<string, string>("email", email),
                 new KeyValuePair<string, string>("phoneNumber", phoneNumber),
@@ -167,12 +180,13 @@ namespace Hackathon_HCL
                 try
                 {
                     dynamic obj2 = Newtonsoft.Json.Linq.JObject.Parse(resultContent);
-
+                    
                     if (obj2.error_code == 1)
                     {
                         Console.WriteLine(obj2.message);
+                        //Toast.MakeText(this, obj2.message, ToastLength.Long).Show(); // Here the error will be generated. "obj2.message" will have the error message.
                         this.message = obj2.message;
-                        this.signupStatus = false;
+                        this.signupStatus = false; // Bad Input?
                     }
                     else
                     {
@@ -182,12 +196,14 @@ namespace Hackathon_HCL
                         this.phoneNumber = obj2.phone;
                         this.apiSecret = obj2.api_secret;
                         this.signupStatus = true; // Flag to tell the other methods about Sign up status
+                        //Toast.MakeText(this, obj2.message, ToastLength.Long).Show(); // Success Message!
                     }
                 }
                 catch (Exception)
                 {
 
                     throw;
+                    //Toast.MakeText(this, loginException.ToString(), ToastLength.Long).Show();
                 }
             }
 

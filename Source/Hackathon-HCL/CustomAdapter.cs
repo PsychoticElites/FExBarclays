@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+
 using Android.App;
 using Android.Content;
 using Android.OS;
@@ -51,6 +52,8 @@ namespace Hackathon_HCL
             TextView driverTeamName1 = row.FindViewById<TextView>(Resource.Id.driverTeamName);
             driverTeamName1.Text = mItem[position].driverTeamName;
 
+            //ImageView driverImage1 = row.FindViewById<ImageView>(Resource.Id.driverImage);
+            //driverImage1.
             Console.WriteLine("This is a Data : ",mItem[position].driverPhoto);
             return row;
         }

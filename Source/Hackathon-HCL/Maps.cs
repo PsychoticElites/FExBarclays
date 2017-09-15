@@ -10,6 +10,11 @@ using Android.Gms.Common;
 using Android.Gms.Location;
 using Android.Views;
 using System;
+using System.Collections.Generic;
+using System.Net.Http;
+using System.Net;
+using System.Threading.Tasks;
+using System.Linq;
 
 namespace Hackathon_HCL
 {
@@ -21,12 +26,14 @@ namespace Hackathon_HCL
         LocationRequest locRequest;
         Spinner spinner;
         bool isGooglePlayServicesInstalled;
-        public int InfoWindowFlag;
+        public int ServiceFlag;
         string toastcoords;
         private GoogleMap mMap;
-        private Button buttonRestRoom, buttonCafe, buttonGrandStand, buttonFEHQ, buttonLocation;
-        LatLng UserLocation, Stadium, GrandStand1, GrandStand2, Restroom1, Restroom2, Restroom3, Restroom4, Restroom5, Restroom6, Restroom7, Restroom8, Cafe1, Cafe2, FEHQ;
-        //Coordinates are Hardcoded as no resources were provided for location of Basic necessities around the tracks. It is done just for Prototype phase and PoC.
+        private ImageButton buttonRestRoom, buttonCafe, buttonGrandStand, buttonFEHQ, buttonLocation;
+        LatLng UserLocation;
+        List<string> listStrLineElements;
+        List<double> DOBresult;
+        string tempLocationString;
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -34,10 +41,9 @@ namespace Hackathon_HCL
             SetContentView(Resource.Layout.MapScreen);
 
             FindViews();
-            CoordsAssign();
             SetUpMap();
             ClickEvents();
-            
+
             isGooglePlayServicesInstalled = IsGooglePlayServicesInstalled();
             if (isGooglePlayServicesInstalled)
             {
@@ -53,11 +59,34 @@ namespace Hackathon_HCL
             apiClient.Connect();    //Connect to Google Services API Client
         }
 
+        private async Task CordiFetcher(string type, string country)
+        {
+            HttpClientHandler handler = new HttpClientHandler()
+            {
+                AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate
+            };
+
+            handler.Proxy = null;
+            using (var client = new HttpClient(handler))
+            {
+                client.BaseAddress = new Uri("https://xonshiz.heliohost.org");
+                var content = new FormUrlEncodedContent(new[]
+                {
+                new KeyValuePair<string, string>("location_type", type),
+                new KeyValuePair<string, string>("country_name", country)
+            });
+                var result = await client.PostAsync("/unitedhcl/api/maps/mapMarkers.php", content);
+                tempLocationString = await result.Content.ReadAsStringAsync();
+            }
+
+
+        }
+
         private void ClickEvents()
         {
             buttonRestRoom.Click += buttonRestRoom_Click;
             buttonCafe.Click += buttonCafe_Click;
-            buttonGrandStand.Click += buttonGrandStand_Click;
+            buttonGrandStand.Click += buttonGrandStand_ClickAsync;
             buttonFEHQ.Click += buttonFEHQ_Click;
             spinner.ItemSelected += Spinner_ItemSelected;
             buttonLocation.Click += buttonLocation_Click;
@@ -67,19 +96,17 @@ namespace Hackathon_HCL
         {
             //Create Google Maps Object
             mMap = googleMap;
-
             mMap.SetInfoWindowAdapter(this);
-
         }
 
         private void FindViews()
         {
             spinner = FindViewById<Spinner>(Resource.Id.spinner);
-            buttonRestRoom = FindViewById<Button>(Resource.Id.buttonRestRoom);
-            buttonCafe = FindViewById<Button>(Resource.Id.buttonCafe);
-            buttonGrandStand = FindViewById<Button>(Resource.Id.buttonGrandStand);
-            buttonFEHQ = FindViewById<Button>(Resource.Id.buttonFEHQ);
-            buttonLocation = FindViewById<Button>(Resource.Id.buttonLocation);
+            buttonRestRoom = FindViewById<ImageButton>(Resource.Id.buttonRestRoom);
+            buttonCafe = FindViewById<ImageButton>(Resource.Id.buttonCafe);
+            buttonGrandStand = FindViewById<ImageButton>(Resource.Id.buttonGrandStand);
+            buttonFEHQ = FindViewById<ImageButton>(Resource.Id.buttonFEHQ);
+            buttonLocation = FindViewById<ImageButton>(Resource.Id.buttonLocation);
         }
 
         private void Spinner_ItemSelected(object sender, AdapterView.ItemSelectedEventArgs e)
@@ -87,11 +114,10 @@ namespace Hackathon_HCL
             switch (e.Position)
             {
                 case 0: //Normal MapType
-                    mMap.MapType = GoogleMap.MapTypeHybrid;
+                    mMap.MapType = GoogleMap.MapTypeNormal;
                     break;
                 case 1: //Hybrid MapType
-                    mMap.MapType = GoogleMap.MapTypeNormal;
-                    
+                    mMap.MapType = GoogleMap.MapTypeHybrid;
                     break;
                 case 2: //Sattelite MapType
                     mMap.MapType = GoogleMap.MapTypeSatellite;
@@ -110,7 +136,7 @@ namespace Hackathon_HCL
 
             if (queryResult == ConnectionResult.Success)
             {
-                Toast.MakeText(this, "Google API Connection Successful!", ToastLength.Short).Show();
+                //Toast.MakeText(this, "Google API Connection Successful!", ToastLength.Short).Show();
                 return true;
             }
 
@@ -122,95 +148,97 @@ namespace Hackathon_HCL
 
             return false;
         }
+        private void APItoMarkerMapUpdater()
+        {
+            mMap.Clear();
+            Toast.MakeText(this, "Coordinates Recieved from the Server.", ToastLength.Short).Show();
+            CameraUpdate cameraUpdate = CameraUpdateFactory.NewLatLngZoom(new LatLng(52.830168, -1.3770267), 14);
+            mMap.AnimateCamera(cameraUpdate, 4000, null);
+
+            listStrLineElements = tempLocationString.Split(',').ToList();
+            listStrLineElements.Remove(listStrLineElements.Last());
+            DOBresult = listStrLineElements.Select(x => double.Parse(x)).ToList();
+
+            switch (ServiceFlag)
+            {
+                case 1:     //Formula E HQ Marker
+                    for (int i = 0; i < DOBresult.Count; i = i + 2)
+                    {
+                        LatLng Coordinates = new LatLng(DOBresult[i], DOBresult[i + 1]);
+                        mMap.AddMarker(new MarkerOptions().SetPosition(Coordinates).SetIcon(BitmapDescriptorFactory.DefaultMarker(BitmapDescriptorFactory.HueMagenta)));
+                    }
+                    break;
+                case 2:     //GrandStands Marker
+                    for (int i = 0; i < DOBresult.Count; i = i + 2)
+                    {
+                        LatLng Coordinates = new LatLng(DOBresult[i], DOBresult[i + 1]);
+                        mMap.AddMarker(new MarkerOptions().SetPosition(Coordinates).SetIcon(BitmapDescriptorFactory.DefaultMarker(BitmapDescriptorFactory.HueYellow)));
+                    }
+                    break;
+                case 3:     //Cafes Marker
+                    for (int i = 0; i < DOBresult.Count; i = i + 2)
+                    {
+                        LatLng Coordinates = new LatLng(DOBresult[i], DOBresult[i + 1]);
+                        mMap.AddMarker(new MarkerOptions().SetPosition(Coordinates).SetIcon(BitmapDescriptorFactory.DefaultMarker(BitmapDescriptorFactory.HueViolet)));
+                    }
+                    break;
+                case 4:     //RestRooms Marker
+                    for (int i = 0; i < DOBresult.Count; i = i + 2)
+                    {
+                        LatLng Coordinates = new LatLng(DOBresult[i], DOBresult[i + 1]);
+                        mMap.AddMarker(new MarkerOptions().SetPosition(Coordinates).SetIcon(BitmapDescriptorFactory.DefaultMarker(BitmapDescriptorFactory.HueBlue)));
+                    }
+                    break;
+            }
+
+        }
 
         private void buttonLocation_Click(object sender, EventArgs e)
         {
-            mMap.Clear(); 
+            mMap.Clear();
             //Fetch GPS Location using Fused Location Provider and Google Location API
             Location location = LocationServices.FusedLocationApi.GetLastLocation(apiClient);
             if (location != null)
             {
                 toastcoords = "Latitude: " + location.Latitude.ToString() + " Longitude: " + location.Longitude.ToString() + " Provider: " + location.Provider.ToString();
-                Toast.MakeText(this, toastcoords, ToastLength.Long).Show();
                 UserLocation = new LatLng(location.Latitude, location.Longitude);
                 CameraUpdate cameraUpdate = CameraUpdateFactory.NewLatLngZoom(UserLocation, 14);
                 mMap.AnimateCamera(cameraUpdate, 4000, null);
                 mMap.AddMarker(new MarkerOptions().SetPosition(UserLocation).SetTitle("UserLocation").SetIcon(BitmapDescriptorFactory.DefaultMarker(BitmapDescriptorFactory.HueRed)));
             }
-            InfoWindowFlag = 0;
+            ServiceFlag = 0;
         }
 
-        //Add Google Markers on Button Click
-        //Animate Camera to Marker Locations
-        private void buttonFEHQ_Click(object sender, System.EventArgs e)
+        private async void buttonFEHQ_Click(object sender, EventArgs e)
         {
-            mMap.Clear();
-            CameraUpdate cameraUpdate = CameraUpdateFactory.NewLatLngZoom(Stadium, 14);
-            mMap.AnimateCamera(cameraUpdate, 4000, null);
-            MarkerOptions FEHQmarker = new MarkerOptions();
-            FEHQmarker.SetPosition(FEHQ).SetTitle("FEHQ").SetIcon(BitmapDescriptorFactory.DefaultMarker(BitmapDescriptorFactory.HueViolet));
-            mMap.AddMarker(FEHQmarker);
-            InfoWindowFlag = 1;
+            Toast.MakeText(this, "Fetching Coordinates for FEHQ...", ToastLength.Short).Show();
+            await Task.Run(() => CordiFetcher("FEHQ", "England"));
+            ServiceFlag = 1;
+            APItoMarkerMapUpdater();
         }
 
-        private void buttonGrandStand_Click(object sender, System.EventArgs e)
+        private async void buttonGrandStand_ClickAsync(object sender, EventArgs e)
         {
-            mMap.Clear();
-            CameraUpdate cameraUpdate = CameraUpdateFactory.NewLatLngZoom(Stadium, 14);
-            mMap.AnimateCamera(cameraUpdate, 4000, null);
-            MarkerOptions GrandStand = new MarkerOptions();
-            GrandStand.SetPosition(GrandStand1).SetTitle("GrandStand1").SetIcon(BitmapDescriptorFactory.DefaultMarker(BitmapDescriptorFactory.HueYellow));
-            mMap.AddMarker(GrandStand);
-            mMap.AddMarker(new MarkerOptions().SetPosition(GrandStand2).SetTitle("GrandStand2").SetIcon(BitmapDescriptorFactory.DefaultMarker(BitmapDescriptorFactory.HueYellow)));
-            InfoWindowFlag = 2;
+            Toast.MakeText(this, "Fetching Coordinates for GrandStands...", ToastLength.Short).Show();
+            await Task.Run(() => CordiFetcher("GrandStand", "England"));
+            ServiceFlag = 2;
+            APItoMarkerMapUpdater();
         }
 
-        private void buttonCafe_Click(object sender, System.EventArgs e)
+        private async void buttonCafe_Click(object sender, EventArgs e)
         {
-            mMap.Clear();
-            CameraUpdate cameraUpdate = CameraUpdateFactory.NewLatLngZoom(Stadium, 14);
-            mMap.AnimateCamera(cameraUpdate, 4000, null);
-            MarkerOptions Cafe = new MarkerOptions();
-            Cafe.SetPosition(Cafe1).SetTitle("Cafe1").SetIcon(BitmapDescriptorFactory.DefaultMarker(BitmapDescriptorFactory.HueGreen));
-            mMap.AddMarker(Cafe);
-            mMap.AddMarker(new MarkerOptions().SetPosition(Cafe2).SetTitle("Cafe2").SetIcon(BitmapDescriptorFactory.DefaultMarker(BitmapDescriptorFactory.HueGreen)));
-            InfoWindowFlag = 3;
+            Toast.MakeText(this, "Fetching Coordinates for Cafes...", ToastLength.Short).Show();
+            await Task.Run(() => CordiFetcher("Cafe", "England"));
+            ServiceFlag = 3;
+            APItoMarkerMapUpdater();
         }
 
-        private void buttonRestRoom_Click(object sender, System.EventArgs e)
+        private async void buttonRestRoom_Click(object sender, EventArgs e)
         {
-            mMap.Clear();
-            CameraUpdate cameraUpdate = CameraUpdateFactory.NewLatLngZoom(Stadium, 14);
-            mMap.AnimateCamera(cameraUpdate, 4000, null);
-            MarkerOptions RestRoom = new MarkerOptions();
-            RestRoom.SetPosition(Restroom1).SetTitle("RestRoom1").SetIcon(BitmapDescriptorFactory.DefaultMarker(BitmapDescriptorFactory.HueBlue));
-            mMap.AddMarker(RestRoom);
-            mMap.AddMarker(new MarkerOptions().SetPosition(Restroom2).SetTitle("RestRoom2").SetIcon(BitmapDescriptorFactory.DefaultMarker(BitmapDescriptorFactory.HueBlue)));
-            mMap.AddMarker(new MarkerOptions().SetPosition(Restroom3).SetTitle("RestRoom3").SetIcon(BitmapDescriptorFactory.DefaultMarker(BitmapDescriptorFactory.HueBlue)));
-            mMap.AddMarker(new MarkerOptions().SetPosition(Restroom4).SetTitle("RestRoom4").SetIcon(BitmapDescriptorFactory.DefaultMarker(BitmapDescriptorFactory.HueBlue)));
-            mMap.AddMarker(new MarkerOptions().SetPosition(Restroom5).SetTitle("RestRoom5").SetIcon(BitmapDescriptorFactory.DefaultMarker(BitmapDescriptorFactory.HueBlue)));
-            mMap.AddMarker(new MarkerOptions().SetPosition(Restroom6).SetTitle("RestRoom6").SetIcon(BitmapDescriptorFactory.DefaultMarker(BitmapDescriptorFactory.HueBlue)));
-            mMap.AddMarker(new MarkerOptions().SetPosition(Restroom7).SetTitle("RestRoom7").SetIcon(BitmapDescriptorFactory.DefaultMarker(BitmapDescriptorFactory.HueBlue)));
-            mMap.AddMarker(new MarkerOptions().SetPosition(Restroom8).SetTitle("RestRoom8").SetIcon(BitmapDescriptorFactory.DefaultMarker(BitmapDescriptorFactory.HueBlue)));
-            InfoWindowFlag = 4;
-        }
-        protected void CoordsAssign()
-        {
-            //Assign Latitude, Longitude to display basic necessities on the map for PoC.
-            Stadium = new LatLng(52.830013, -1.374737);
-            GrandStand1 = new LatLng(52.830136, -1.379141);
-            GrandStand2 = new LatLng(52.829419, -1.378130);
-            Restroom1 = new LatLng(52.828499, -1.364191);
-            Restroom2 = new LatLng(52.832253, -1.367951);
-            Restroom3 = new LatLng(52.833201, -1.376405);
-            Restroom4 = new LatLng(52.832603, -1.382452);
-            Restroom5 = new LatLng(52.830085, -1.383991);
-            Restroom6 = new LatLng(52.829926, -1.382816);
-            Restroom7 = new LatLng(52.828714, -1.383107);
-            Restroom8 = new LatLng(52.828281, -1.374109);
-            Cafe1 = new LatLng(52.828800, -1.3824590);
-            Cafe2 = new LatLng(52.827159, -1.364998);
-            FEHQ = new LatLng(52.827941, -1.384954);
+            Toast.MakeText(this, "Fetching Coordinates for RestRooms...", ToastLength.Short).Show();
+            await Task.Run(() => CordiFetcher("Restroom", "England"));
+            ServiceFlag = 4;
+            APItoMarkerMapUpdater();
         }
 
         //Initialize Maps and Views
@@ -219,8 +247,6 @@ namespace Hackathon_HCL
             if (mMap == null)
             {
                 FragmentManager.FindFragmentById<MapFragment>(Resource.Id.Map).GetMapAsync(this);
-                
-
             }
         }
 
@@ -228,7 +254,7 @@ namespace Hackathon_HCL
         public View GetInfoWindow(Marker marker)
         {
             View view = LayoutInflater.Inflate(Resource.Layout.MakerInfoWindow, null, false);
-            switch (InfoWindowFlag)
+            switch (ServiceFlag)
             {
                 case 0:     //Location Marker
                     view.FindViewById<ImageView>(Resource.Id.imageView).SetImageResource(Resource.Drawable.ic_location);
@@ -284,7 +310,7 @@ namespace Hackathon_HCL
         public void OnStatusChanged(string provider, [GeneratedEnum] Availability status, Bundle extras)
         {
         }
-       
+
         public void OnConnected(Bundle bundle)
         {
         }

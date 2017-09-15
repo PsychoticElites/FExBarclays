@@ -15,6 +15,7 @@ namespace Hackathon_HCL
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.OurVideoPlayer);
 
+            // Create your application here
             string videoUrl = Intent.GetStringExtra("videoUrl") ?? "Data not available"; ;
             VideoPlayer = FindViewById<VideoView>(Resource.Id.LiveVideoMain);
 

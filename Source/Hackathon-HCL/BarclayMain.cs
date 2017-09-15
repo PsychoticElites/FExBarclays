@@ -21,6 +21,7 @@ namespace Hackathon_HCL
 
         public override void OnBackPressed()
         {
+            //base.OnStop();
             base.OnDestroy();
             CrossTextToSpeech.Dispose();
             base.OnBackPressed();
@@ -30,12 +31,14 @@ namespace Hackathon_HCL
             this.RequestWindowFeature(WindowFeatures.NoTitle);
             base.OnCreate(bundle);
 
+            // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
 
             Typeface tf = Typeface.CreateFromAsset(Assets, "PoppinsMedium.ttf");
             var ATM = FindViewById<Button>(Resource.Id.ATMBranch);
             ATM.SetTypeface(tf, TypefaceStyle.Normal);
 
+            //Typeface tf1 = Typeface.CreateFromAsset(Assets, "SourceSansPro-Regular.ttf");
             var Branch = FindViewById<Button>(Resource.Id.BranchDetailsScreen);
             Branch.SetTypeface(tf, TypefaceStyle.Normal);
 
@@ -50,6 +53,7 @@ namespace Hackathon_HCL
             await SpeakerAsync("Find nearest Barclays Bank Branch");
             await SpeakerAsync("Or do you want to go back to main menu?");
 
+            // Let the Gal speak first, then we handle events...
             HandleEvents();
 
             // Start the voice intent.

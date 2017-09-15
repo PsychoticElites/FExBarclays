@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+
 using Android.App;
 using Android.OS;
 using Android.Widget;
@@ -11,6 +12,8 @@ using Android.Content.PM;
 using Android.Graphics;
 using System.Threading.Tasks;
 using Android.Views;
+using System.Threading;
+using System.Linq;
 
 namespace Hackathon_HCL
 {
@@ -18,12 +21,13 @@ namespace Hackathon_HCL
     public class raceScheduleActivity : AppCompatActivity
     {
         MaterialSpinner spinner;
+        //Spinner spinner;
         List<string> listItems = new List<string>();
         ArrayAdapter<string> adapter;
-       
+        //ImageView cktImage; // Use this variable for Setting Image
         TextView cktName, raceRound, raceDay, raceDate, eRace, raceQualifying, racePractice1, racePractice2;
-        public string countryName, circuitName, dateOfRace, dayOfRace, roundOfRace, entryStart, practiceOne, practiceTwo, qualifying, finalRace, cktImage;
-        ImageView circuitImage;
+        public string countryName, circuitName, dateOfRace, dayOfRace, roundOfRace, entryStart, practiceOne, practiceTwo, qualifying, finalRace, cktImage, countryListString;
+        ImageView circuitImage,circuitImage2;
 
         private Bitmap GetImageBitmapFromUrl(string url)
         {
@@ -42,18 +46,21 @@ namespace Hackathon_HCL
         }
 
         public override bool OnOptionsItemSelected(IMenuItem item)
-        { 
+        {
+            //Back button pressed -> toggle event
             if (item.ItemId == Android.Resource.Id.Home)
                 this.OnBackPressed();
 
             return base.OnOptionsItemSelected(item);
         }
 
-        protected override void OnCreate(Bundle savedInstanceState)
+        protected async override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.raceSchedule);
             circuitImage = FindViewById<ImageView>(Resource.Id.cktImage);
+            circuitImage2 = FindViewById<ImageView>(Resource.Id.raceScheduleBanner);
+            //circuitImage2.Visibility = ViewStates.Gone;
             cktName = FindViewById<TextView>(Resource.Id.textViewCktName);
             raceRound = FindViewById<TextView>(Resource.Id.textViewRound);
             raceDay = FindViewById<TextView>(Resource.Id.textViewDay);
@@ -74,6 +81,8 @@ namespace Hackathon_HCL
             raceQualifying.SetTypeface(tf3, Android.Graphics.TypefaceStyle.Normal);
             racePractice1.SetTypeface(tf3, Android.Graphics.TypefaceStyle.Normal);
             racePractice2.SetTypeface(tf3, Android.Graphics.TypefaceStyle.Normal);
+            await Task.Run(() => CountryListFetcher());
+            //cktImage = FindViewById<ImageView>(Resource.Id.cktImage1);
 
             Android.Support.V7.Widget.Toolbar toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
             toolbar.Title = "Race Schedule";
@@ -83,7 +92,7 @@ namespace Hackathon_HCL
                 SupportActionBar.SetDisplayHomeAsUpEnabled(true);
             }
 
-            InitItems();
+            InitItemsAsync();
             spinner = FindViewById<MaterialSpinner>(Resource.Id.spinnerCountrySelect);
             adapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleSpinnerDropDownItem, listItems);
             adapter.SetDropDownViewResource(Android.Resource.Layout.SimpleDropDownItem1Line);
@@ -93,40 +102,92 @@ namespace Hackathon_HCL
                 if (e.Position != -1)
                 {
                     long selected = spinner.GetItemIdAtPosition(e.Position);
-                    switch (selected)
-                    {
-                        case 0:
-                            Console.WriteLine("Cases {0}", selected);
-                            await getRaceSchedule(selected);
-                            break;
+                    Console.WriteLine("Selected : " + selected);
+                    await getRaceSchedule(selected);
+                    //switch (selected)
+                    //{
+                    //    case 0:
+                    //        Console.WriteLine("Cases {0}", selected);
+                    //        await getRaceSchedule(selected);
+                    //        break;
 
-                        case 1:
-                            Console.WriteLine("Cases {0}", selected);
-                            await getRaceSchedule(selected);
-                            break;
+                    //    case 1:
+                    //        Console.WriteLine("Cases {0}", selected);
+                    //        await getRaceSchedule(selected);
+                    //        break;
 
-                        case 2:
-                            Console.WriteLine("Cases {0}", selected);
-                            await getRaceSchedule(selected);
-                            break;
+                    //    case 2:
+                    //        Console.WriteLine("Cases {0}", selected);
+                    //        await getRaceSchedule(selected);
+                    //        break;
 
-                        case 3:
-                            Console.WriteLine("Cases {0}", selected);
-                            await getRaceSchedule(selected);
-                            break;
-                    }
+                    //    case 3:
+                    //        Console.WriteLine("Cases {0}", selected);
+                    //        await getRaceSchedule(selected);
+                    //        break;
+                    //}
                 }
             };
         }
 
-        private void InitItems()
+        private void InitItemsAsync()
         {
-          
-            listItems.Add("Berlin");
-            listItems.Add("Hong Kong");
-            listItems.Add("Monaco");
-            listItems.Add("New York City");
+            //await Task.Run(() => CountryListFetcher());
+            List<string> result = this.countryListString.Split('~').ToList();
+            foreach (var item in result)
+            {
+                if (!string.IsNullOrEmpty(item))
+                {
+                    Console.WriteLine("Item : " + item);
+                    listItems.Add(item);
+                }
+            }
+            // Adding Coutries to the list of countries. Ids are assigned in the order these countries are added.
+            // Berlin = 0
+            //listItems.Add("Berlin");
+            //listItems.Add("Hong Kong");
+            //listItems.Add("Monaco");
+            //listItems.Add("New York City");
         }
+
+        private async Task CountryListFetcher()
+        {
+            //Console.WriteLine("Email Id : " + userEmail);
+            //Console.WriteLine("Password : " + userPassword);
+
+            HttpClientHandler handler = new HttpClientHandler()
+            {
+                AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate
+            };
+
+            handler.Proxy = null;
+            using (var client = new HttpClient(handler))
+            {
+                client.BaseAddress = new Uri("https://xonshiz.heliohost.org");
+
+                var result = await client.GetAsync("/unitedhcl/jsonData/race_country_list.php");
+                string resultContent = await result.Content.ReadAsStringAsync();
+
+                this.countryListString = resultContent;
+                Console.WriteLine("Country List : " + countryListString);
+            }
+
+        }
+        //private void DynamicColor()
+        //{
+
+        //    var palette = Palette.GenerateAsync(Resource.Drawable.feraceschedule);
+        ////    Bitmap bitmap = BitmapFactory.DecodeResource(Resource.Id.toolbar, Resource.Drawable.feraceschedule);
+        ////    Palette.from(bitmap).generate(new Palette.PaletteAsyncListener() {
+
+        ////    @Override
+        ////    public void onGenerated(Palette palette)
+        ////    {
+        ////        collapsingToolbarLayout.setContentScrimColor(palette.getMutedColor(R.attr.colorPrimary));
+        ////        collapsingToolbarLayout.setStatusBarScrimColor(palette.getMutedColor(R.attr.colorPrimaryDark);
+        ////    }
+        ////});
+        //}
 
         public async Task getRaceSchedule(long countryId)
         {
@@ -143,9 +204,9 @@ namespace Hackathon_HCL
                 var content = new FormUrlEncodedContent(new[]
                 {
 
-                new KeyValuePair<string, string>("id", countryId.ToString())
+                new KeyValuePair<string, string>("country_id", countryId.ToString())
             });
-                var result = await client.PostAsync("/unitedhcl/jsonData/schedule.php", content);
+                var result = await client.PostAsync("/unitedhcl/jsonData/new_schedule.php", content);
                 string resultContent = await result.Content.ReadAsStringAsync();
 
                 try
@@ -162,13 +223,32 @@ namespace Hackathon_HCL
                     this.raceQualifying.Text = obj2.qualifying;
                     this.eRace.Text = obj2.e_race;
                     this.cktImage = obj2.ckt_image;
-                    var imageBitmap = GetImageBitmapFromUrl(this.cktImage);
-                    circuitImage.SetImageBitmap(imageBitmap);
+                    //this.cktImage = obj2.ckt_image;
+                    Console.WriteLine("Circuit Image : " + this.cktImage);
+                    //var imageBitmap = GetImageBitmapFromUrl(this.cktImage);
+                    //circuitImage.SetImageBitmap(imageBitmap);
+                    try
+                    {
+                        new Thread(new ThreadStart(() =>
+                        {
+                            var imageBitmap = GetImageBitmapFromUrl(this.cktImage);
+                            /*circuitImage.SetImageBitmap(imageBitmap)*/
+                            ;
+
+                            RunOnUiThread(() => circuitImage.SetImageBitmap(imageBitmap));
+                            //RunOnUiThread(() => circuitImage2.SetImageBitmap(imageBitmap));
+                        })).Start();
+                    }
+                    catch (Exception NahNah)
+                    {
+                        Console.WriteLine("Nah : " + NahNah);
+                    }
                 }
                 catch (Exception MainExcheption)
                 {
                     Console.WriteLine("MainExcheption : " + MainExcheption);
                     throw;
+                    //Toast.MakeText(this, loginException.ToString(), ToastLength.Long).Show(); //Showing Bad Connection Error
                 }
 
             }

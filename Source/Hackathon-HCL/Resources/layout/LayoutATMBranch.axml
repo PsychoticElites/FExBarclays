@@ -3,17 +3,20 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/barclaysbg2">
+    android:background="@drawable/barclaysbg2"
+    android:weightSum="100">
     <ScrollView
         android:minWidth="25px"
         android:minHeight="25px"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/scrollView1">
+        android:id="@+id/ATM_MainLayout"
+        android:visibility="visible">
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_weight="50">
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:minHeight="?attr/actionBarSize"
@@ -38,15 +41,13 @@
                     android:id="@+id/linearLayout3"
                     android:layout_gravity="top|center"
                     android:gravity="center">
-                    <ProgressBar
-                        android:id="@+id/progressBar1"
-                        style="?android:attr/progressBarStyleLarge"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:layout_centerHorizontal="true"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="40dp"
-                        android:visibility="gone" />
+                    <fragment
+                        android:id="@+id/Map"
+                        android:layout_height="456.0dp"
+                        android:layout_width="match_parent"
+                        android:name="com.google.android.gms.maps.MapFragment"
+                        android:layout_weight="50"
+                        android:layout_margin="2dp" />
                 </LinearLayout>
                 <LinearLayout
                     android:orientation="vertical"
@@ -146,4 +147,22 @@
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
+    <LinearLayout
+        android:orientation="vertical"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/ATMlinearLayout_ProgressBar"
+        android:background="#aa000000"
+        android:gravity="center"
+        android:visibility="gone">
+        <ProgressBar
+            android:id="@+id/progressBar1"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="383.0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_centerHorizontal="true" />
+    </LinearLayout>
 </LinearLayout>

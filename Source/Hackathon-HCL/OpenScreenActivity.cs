@@ -1,19 +1,24 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
 using Android.App;
 using Android.Content;
 using Android.OS;
+using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.Content.PM;
 
 namespace Hackathon_HCL
 {
-    [Activity(Label = "Hackathon - HCL", MainLauncher = true, ScreenOrientation = ScreenOrientation.Portrait)]
+    [Activity(MainLauncher = true, ScreenOrientation = ScreenOrientation.Portrait)]
     public class OpenScreenActivity : Activity
     {
 
-        
-        
+        private ImageButton OpenFE;
+        private ImageButton OpenBarclays;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             this.RequestWindowFeature(WindowFeatures.NoTitle);
@@ -24,6 +29,7 @@ namespace Hackathon_HCL
 
             FEButton.Click += FEButton_Click;
             BarclaysButton.Click += BarclaysButton_Click;
+            // Create your application here
         }
         private void BarclaysButton_Click(object sender, EventArgs e)
         {
@@ -38,7 +44,8 @@ namespace Hackathon_HCL
         }
 
         public override void OnBackPressed()
-        { 
+        {
+            //base.OnBackPressed();
             Toast.MakeText(this, "This function is not allowed.", ToastLength.Long).Show(); //Showing Bad Connection Error
         }
     }

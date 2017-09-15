@@ -10,19 +10,20 @@ using Android.Content;
 
 namespace Hackathon_HCL
 {
-    [Activity(Label = "Sample Data", Theme = "@style/Theme.DesignDemo", Icon = "@drawable/icon")]
+    [Activity(Label = "Sample Data", Theme = "@style/Theme.DesignDemo", Icon = "@drawable/icon",MainLauncher =false)]
     public class SampleExp : AppCompatActivity
     {
-        
+        DrawerLayout drawerLayout;
+        NavigationView navigationView;
         protected override void OnCreate(Bundle bundle)
         {
 
             base.OnCreate(bundle);
 
+            // Set our view from the "main" layout resource  
             SetContentView(Resource.Layout.MainActivitySample);
             string extraData = Intent.GetStringExtra("value");
-            var dataField = FindViewById<EditText>(Resource.Id.sampleTextField);
-            dataField.Text = extraData;
+            //dataField.Text = extraData;
 
         }
     }

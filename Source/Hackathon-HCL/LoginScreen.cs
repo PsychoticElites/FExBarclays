@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+
 using Android.App;
 using Android.Content;
 using Android.OS;
@@ -22,15 +23,20 @@ namespace Hackathon_HCL
         private string name, userName, email, phoneNumber, apiSecret, message;
         private Boolean loginStatus;
         private ProgressBar spinner;
+        private LinearLayout layoutLoginProgress;
+        private LinearLayout layoutLoginMainLayout;
         
         protected override void OnCreate(Bundle bundle)
         {
             this.RequestWindowFeature(WindowFeatures.NoTitle);
             base.OnCreate(bundle);
  
+            // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.LoginScreen);
 
             FindViews();
+            userEmailId.Text = "kanojia24.10@gmail.com";
+            userPassword.Text = "thisismypassword";
             HandleEvents();
         }
 
@@ -39,7 +45,7 @@ namespace Hackathon_HCL
             Typeface tf = Typeface.CreateFromAsset(Assets, "Khula-Regular.ttf");
             Typeface tf2 = Typeface.CreateFromAsset(Assets, "PoppinsMedium.ttf");
             LoginProceed = FindViewById<Button>(Resource.Id.ButtonLogin);
-            LoginProceed.SetTypeface(tf2, TypefaceStyle.Normal);
+            LoginProceed.SetTypeface(tf2, TypefaceStyle.Bold);
             LoginSignupProceed = FindViewById<TextView>(Resource.Id.LoginSignup);
             Typeface tf1 = Typeface.CreateFromAsset(Assets, "Khula-Light.ttf");
             LoginSignupProceed.SetTypeface(tf, TypefaceStyle.Bold);
@@ -48,13 +54,17 @@ namespace Hackathon_HCL
             userEmailId.SetTypeface(tf, TypefaceStyle.Normal);
             userPassword = FindViewById<TextView>(Resource.Id.LoginPassword);
             userPassword.SetTypeface(tf, TypefaceStyle.Normal);
+            layoutLoginProgress = FindViewById<LinearLayout>(Resource.Id.linearLayout_ProgressBar);
+            layoutLoginMainLayout = FindViewById<LinearLayout>(Resource.Id.scrollView_MainLoginLayout);
+            //var textViewSign1 = FindViewById<TextView>(Resource.Id.textViewSign);
+            //textViewSign1.SetTypeface(tf, TypefaceStyle.Bold);
             spinner = FindViewById<ProgressBar>(Resource.Id.progressBar1);
 
         }
 
         private void HandleEvents()
         {
-
+            //LoginProceed.Click += LoginProceed_Click;
             LoginProceed.Click += async (sender, e) =>
             {
 
@@ -71,13 +81,16 @@ namespace Hackathon_HCL
                 {
                     if (Android.Util.Patterns.EmailAddress.Matcher(userEmailId.Text).Matches())
                     {
-                        spinner.Visibility = ViewStates.Visible;
+                        layoutLoginProgress.Visibility = ViewStates.Visible;
+                        layoutLoginMainLayout.Visibility = ViewStates.Gone;
                         //LoginProceed_Click;
                         await Task.Run(() => LoginPoster(userEmailId.Text, userPassword.Text));
-                        spinner.Visibility = ViewStates.Gone;
+                        layoutLoginProgress.Visibility = ViewStates.Gone;
+                        layoutLoginMainLayout.Visibility = ViewStates.Visible;
 
                         if (this.loginStatus == true)
                         {
+                            // Upon successful login, we move forward to next screen!
                             var IntentLoginProceed = new Intent(this, typeof(MainActivity));
                             StartActivity(IntentLoginProceed);
                             Finish();
@@ -106,14 +119,21 @@ namespace Hackathon_HCL
             Finish();
         }
 
+        //private void LoginProceed_Click(object sender, EventArgs e)
+        //{
+        //    var IntentLoginProceed = new Intent(this, typeof(MainActivity));
+        //    StartActivity(IntentLoginProceed);
+        //    Finish();
+        //}
 
 
-        
+        // Posts the email and password to the login API and checks for the authorization.
         private async Task LoginPoster(string userEmail, string userPassword)
         {
             Console.WriteLine("Email Id : " + userEmail);
             Console.WriteLine("Password : " + userPassword);
 
+            // Let's not look up any proxy. Direct connection, please.
             HttpClientHandler handler = new HttpClientHandler()
             {
                 AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate
@@ -144,9 +164,9 @@ namespace Hackathon_HCL
                     if (obj2.error_code == "1")
                     {
                         Console.WriteLine(obj2.message);
-
+                        //Toast.MakeText(this, obj2.message, ToastLength.Long).Show(); //Showing Bad Connection Error
                         this.message = obj2.message;
-                        this.loginStatus = false; 
+                        this.loginStatus = false; // bad credentials?
                     }
                     else
                     {
@@ -155,14 +175,15 @@ namespace Hackathon_HCL
                         this.email = obj2.email;
                         this.phoneNumber = obj2.phone;
                         this.apiSecret = obj2.api_secret;
-                        this.loginStatus = true; 
+                        this.loginStatus = true; // Flag to tell the other methods about login status
+                        //Toast.MakeText(this, obj2.message, ToastLength.Long).Show(); //Showing Bad Connection Error
                     }
                 }
                 catch (Exception)
                 {
 
                     throw;
-                   
+                    //Toast.MakeText(this, loginException.ToString(), ToastLength.Long).Show(); //Showing Bad Connection Error
                 }
 
             }

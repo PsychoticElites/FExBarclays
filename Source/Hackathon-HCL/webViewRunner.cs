@@ -29,8 +29,10 @@ namespace Hackathon_HCL
             base.OnCreate(savedInstanceState);
 
             SetContentView(Resource.Layout.myWebView);
+            // Create your application here
             Console.WriteLine("Working!");
             urlToOpen = Intent.GetStringExtra("url") ?? "http://www.fiaformulae.com/en";
+            //urlToOpen = Intent.GetStringExtra("url") ?? "http://xonshiz.heliohost.org/unitedhcl/webviews/videoPlayer.html";
             web_view = FindViewById<WebView>(Resource.Id.webViewMain);
             web_view.Settings.JavaScriptEnabled = true;
             web_view.LoadUrl(urlToOpen);

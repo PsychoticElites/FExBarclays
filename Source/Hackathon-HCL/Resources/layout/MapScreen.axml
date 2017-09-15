@@ -1,84 +1,219 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/linearLayout2"
-    android:background="@drawable/mainlayoutbg"
-    android:weightSum="100">
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:entries="@array/maptype_arrays" />
-    <fragment
-        android:id="@+id/Map"
-        android:layout_height="456.0dp"
-        android:layout_width="match_parent"
-        android:name="com.google.android.gms.maps.MapFragment"
-        android:layout_weight="90"
-        android:layout_margin="2dp" />
+    android:minWidth="25px"
+    android:minHeight="25px"
+    android:background="#aa7f7f7f">
     <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/linearLayout4"
-        android:layout_gravity="center|bottom"
-        android:gravity="center"
-        android:padding="10dp"
-        android:layout_marginBottom="5dp"
-        android:layout_marginTop="5dp">
-        <Button
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:id="@+id/buttonRestRoom"
-            android:background="@drawable/restrooms"
-            android:layout_marginRight="5dp"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="5dp"
-            android:hapticFeedbackEnabled="true"
-            android:padding="10dp" />
-        <Button
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:id="@+id/buttonCafe"
-            android:background="@drawable/cafe"
-            android:layout_marginRight="7.5dp"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginLeft="7.5dp"
-            android:hapticFeedbackEnabled="true" />
-        <Button
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:id="@+id/buttonGrandStand"
-            android:background="@drawable/grandstand"
-            android:layout_marginLeft="7.5dp"
-            android:layout_marginRight="7.5dp"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="5dp"
-            android:hapticFeedbackEnabled="true" />
-        <Button
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:id="@+id/buttonFEHQ"
-            android:background="@drawable/webfelogo"
-            android:layout_marginBottom="5dp"
-            android:layout_marginRight="7.5dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginLeft="7.5dp"
-            android:hapticFeedbackEnabled="true" />
-        <Button
-            android:id="@+id/buttonLocation"
-            android:background="@drawable/ic_location"
-            android:layout_width="65dp"
-            android:layout_height="65dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            android:layout_marginRight="7.5dp"
-            android:hapticFeedbackEnabled="true"
-            android:layout_marginLeft="10dp"
-            android:layout_gravity="right|center"
-            android:gravity="right" />
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/linearLayout1"
+        android:layout_alignParentBottom="false"
+        android:minWidth="25px"
+        android:minHeight="25px">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="1"
+            android:padding="5dp"
+            android:background="#252421">
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_height="30dp"
+                android:layout_width="match_parent"
+                android:layout_weight="0.8"
+                android:entries="@array/maptype_arrays"
+                android:background="@drawable/roundbutton_layout5" />
+        </LinearLayout>
+        <fragment
+            android:id="@+id/Map"
+            android:layout_height="404.0dp"
+            android:layout_width="match_parent"
+            android:name="com.google.android.gms.maps.MapFragment"
+            android:layout_margin="5dp" />
     </LinearLayout>
-</LinearLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout1"
+        android:background="@drawable/textfields4"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="5dp"
+        android:elevation="10dp">
+        <TextView
+            android:text="SEARCH NEARBY"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView1"
+            android:textColor="#000000"
+            android:textAllCaps="true"
+            android:textStyle="bold"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:layout_marginBottom="10dp" />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/linearLayout2"
+            android:weightSum="1"
+            android:minWidth="25px"
+            android:minHeight="25px">
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/buttonRestRoom1"
+                android:layout_weight="0.2"
+                android:gravity="center"
+                android:layout_marginLeft="2.5dp"
+                android:layout_marginRight="2.5dp"
+                android:layout_marginBottom="5dp"
+                android:hapticFeedbackEnabled="true"
+                android:clickable="true">
+                <ImageButton
+                    android:src="@drawable/restrooms"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:id="@+id/buttonRestRoom"
+                    android:scaleType="centerInside"
+                    android:background="@color/design_fab_shadow_end_color"
+                    android:padding="5dp" />
+                <TextView
+                    android:text="Restrooms"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView2"
+                    android:textColor="#7f7f7f"
+                    android:textAlignment="center"
+                    android:textSize="12sp" />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/buttonCafe1"
+                android:layout_weight="0.2"
+                android:gravity="center"
+                android:layout_marginRight="2.5dp"
+                android:layout_marginLeft="2.5dp"
+                android:layout_marginBottom="5dp"
+                android:hapticFeedbackEnabled="true"
+                android:clickable="true">
+                <ImageButton
+                    android:src="@drawable/cafe"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:id="@+id/buttonCafe"
+                    android:scaleType="centerInside"
+                    android:background="@color/design_fab_shadow_end_color"
+                    android:padding="5dp" />
+                <TextView
+                    android:text="Cafe"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView2"
+                    android:textColor="#7f7f7f"
+                    android:textAlignment="center"
+                    android:textSize="12sp" />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/buttonGrandStand1"
+                android:layout_weight="0.2"
+                android:gravity="center"
+                android:layout_marginLeft="2.5dp"
+                android:layout_marginRight="2.5dp"
+                android:layout_marginBottom="5dp"
+                android:hapticFeedbackEnabled="true"
+                android:clickable="true">
+                <ImageButton
+                    android:src="@drawable/grandstand"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:id="@+id/buttonGrandStand"
+                    android:scaleType="centerInside"
+                    android:background="@color/design_fab_shadow_end_color"
+                    android:padding="5dp" />
+                <TextView
+                    android:text="Grandstand"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView2"
+                    android:textColor="#7f7f7f"
+                    android:textAlignment="center"
+                    android:textSize="12sp" />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/buttonFEHQ1"
+                android:layout_weight="0.2"
+                android:gravity="center"
+                android:layout_marginRight="2.5dp"
+                android:layout_marginLeft="2.5dp"
+                android:layout_marginBottom="5dp"
+                android:hapticFeedbackEnabled="true"
+                android:clickable="true">
+                <ImageButton
+                    android:src="@drawable/webfelogo"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:id="@+id/buttonFEHQ"
+                    android:scaleType="centerInside"
+                    android:background="@color/design_fab_shadow_end_color"
+                    android:padding="5dp" />
+                <TextView
+                    android:text="FE Headquarter"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView2"
+                    android:textColor="#7f7f7f"
+                    android:textAlignment="center"
+                    android:textSize="12sp" />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="vertical"
+                android:id="@+id/buttonLocation1"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:hapticFeedbackEnabled="true"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="2.5dp"
+                android:layout_marginRight="2.5dp"
+                android:layout_marginBottom="5dp"
+                android:clickable="true">
+                <ImageButton
+                    android:src="@drawable/ic_location"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:id="@+id/buttonLocation"
+                    android:scaleType="centerInside"
+                    android:background="@color/design_fab_shadow_end_color"
+                    android:padding="5dp" />
+                <TextView
+                    android:text="Your Location"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView2"
+                    android:textColor="#7f7f7f"
+                    android:textAlignment="center"
+                    android:textSize="12sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

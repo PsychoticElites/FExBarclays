@@ -1,12 +1,15 @@
 using System;
 using Android.App;
 using Android.OS;
+using Android.Views;
 using Android.Widget;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Android.Media;
 using Android.Content.PM;
 using Android.Content;
 using Android.Graphics;
+using Android.Support.Design.Widget;
 
 namespace Hackathon_HCL
 {
@@ -16,13 +19,37 @@ namespace Hackathon_HCL
         private string overHeadCamFeed, tvCamFeed, carCamFeed, trackCamFeed;
         private Button ButtonCarCamera, ButtonTrackCamera, ButtonOverheadCamera, ButtonTVFeed,goVR;
         private VideoView previewVideoPlayer;
-        
+        private ProgressBar spinner;
 
-       
+        //public void OnCompletion(MediaPlayer mp)
+        //{
+        //    Console.Write("Video Player Error : ");
+        //    throw new NotImplementedException();
+        //}
+
+        //public void OnPrepared(MediaPlayer mp)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
         
         public override void OnBackPressed()
         {
-            
+            //if (VideoPlayer.IsPlaying)
+            //{
+            //    VideoPlayer.StopPlayback();
+            //    //this.RequestedOrientation = ScreenOrientation.Portrait;
+            //    VideoPlayer.Visibility = ViewStates.Gone;
+            //    // As soon as the video starts, bring all the buttons back.
+            //    ButtonCarCamera.Visibility = ViewStates.Visible;
+            //    ButtonTrackCamera.Visibility = ViewStates.Visible;
+            //    ButtonOverheadCamera.Visibility = ViewStates.Visible;
+            //    ButtonTVFeed.Visibility = ViewStates.Visible;
+            //}
+            //else
+            //{
+            //    base.OnBackPressed();
+            //}
             previewVideoPlayer.Suspend();
             base.OnBackPressed();
         }
@@ -48,7 +75,7 @@ namespace Hackathon_HCL
 
         private void FindViews()
         {
-            
+            //spinner = FindViewById<ProgressBar>(Resource.Id.progressBarRace);
             ButtonCarCamera = FindViewById<Button>(Resource.Id.ButtonCarCamera);
             ButtonTrackCamera = FindViewById<Button>(Resource.Id.ButtonTrackCamera);
             ButtonOverheadCamera = FindViewById<Button>(Resource.Id.ButtonOverheadCamera);
@@ -61,7 +88,7 @@ namespace Hackathon_HCL
             ButtonOverheadCamera.SetTypeface(tf, TypefaceStyle.Bold);
             ButtonTVFeed.SetTypeface(tf, TypefaceStyle.Bold);
             goVR.SetTypeface(tf, TypefaceStyle.Bold);
-            
+            //VideoPlayer = FindViewById<VideoView>(Resource.Id.LiveVideoMain);
         }
 
 
@@ -75,7 +102,8 @@ namespace Hackathon_HCL
             previewVideoPlayer.SetMediaController(mediaController);
             previewVideoPlayer.RequestFocus();
             Console.WriteLine("Got the focus");
-            
+            //this.RequestedOrientation = ScreenOrientation.Landscape;
+            //previewVideoPlayer.Visibility = ViewStates.Visible;
             Console.WriteLine("Starting the video");
             previewVideoPlayer.Start();
             Console.WriteLine("Done!");
@@ -153,7 +181,9 @@ namespace Hackathon_HCL
 
         private void GoVR_Click(object sender, EventArgs e)
         {
-            
+            //var rootlayout = FindViewById<LinearLayout>(Resource.Id.rootLayout);
+            //Snackbar snackbar = Snackbar.Make(rootlayout, "This feature will be available in future updates", Snackbar.LengthShort);
+            //snackbar.Show();
             Toast.MakeText(this, "This feature will be available in future updates", ToastLength.Short).Show();
         }
 

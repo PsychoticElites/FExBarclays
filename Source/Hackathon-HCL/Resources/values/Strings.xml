@@ -12,7 +12,6 @@
     <string name="LoginString">Already have an Account ? <b><u>Log in.</u></b></string>
   <string name="StringCountry">"Choose a11 Country Code"</string>
   <string-array name="Country_Code">
-    <item>---Country Code---</item>
     <item>+91 - India</item>
     <item>+01 - United States</item>
     <item>+66 - Thailand</item>

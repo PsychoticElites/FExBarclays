@@ -13,7 +13,7 @@
         android:id="@+id/linearLayout1"
         android:layout_marginTop="50dp">
         <ImageView
-            android:src="@drawable/webbarclays"
+            android:src="@drawable/ic_BarclaysMainLogo"
             android:layout_width="match_parent"
             android:layout_height="190.0dp"
             android:id="@+id/imageView1"

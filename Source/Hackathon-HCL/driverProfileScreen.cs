@@ -1,10 +1,16 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
 using Android.App;
 using Android.Content;
 using Android.OS;
+using Android.Runtime;
+using Android.Views;
 using Android.Widget;
 using System.Net.Http;
+using System.Threading.Tasks;
 using Android.Graphics;
 using System.Net;
 using Android.Content.PM;
@@ -21,6 +27,7 @@ namespace Hackathon_HCL
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.driverProfile);
+            // Create your application here
             string id_got = Intent.GetStringExtra("id") ?? "0";
             FindViews();
             getRaceSchedule(id_got);
