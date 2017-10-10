@@ -239,7 +239,7 @@ If selected for the 3rd round, we would like to optimize this application furthe
     - Stood among TOP 50 participants in the Hackathon. 
 
 
-- ### ICICI Hackathon 2017
+- ### ICICI Hackathon 2017([Project Link](https://github.com/PsychoticElites/ICICI-Appathon-2017))
     - Developed an Android application which introduces a new Method for Visually-Challenged People to interact and use Bank Services such as performing Fund Transfers, Bill Payment and checking Account Details.
 
 ## 12.  Team
